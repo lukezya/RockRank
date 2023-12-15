@@ -102,7 +102,7 @@ Page({
   onZoneClick(e) {
     const { attemptsMade, undoStack } = this.data
     wx.vibrateShort({
-      type: 'heavy'
+      type: 'medium'
     })
 
     if (attemptsMade === 0) {
@@ -125,7 +125,9 @@ Page({
 
   onTopClick(e) {
     const { attemptsMade, zoneOnAttempt, undoStack } = this.data
-    wx.vibrateLong()
+    wx.vibrateShort({
+      type: 'heavy'
+    })
     if (attemptsMade === 0) {
       undoStack.push(Actions.TOP_ON_ZERO)
       this.setData({
