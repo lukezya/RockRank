@@ -90,6 +90,9 @@ Page({
 
   onAttemptClick(e) {
     this.data.undoStack.push(Actions.ATTEMPT)
+    wx.vibrateShort({
+      type: 'light'
+    })
     this.setData({
       attemptsMade: this.data.attemptsMade + 1,
       undoStack: this.data.undoStack
@@ -98,7 +101,9 @@ Page({
 
   onZoneClick(e) {
     const { attemptsMade, undoStack } = this.data
-    
+    wx.vibrateShort({
+      type: 'heavy'
+    })
 
     if (attemptsMade === 0) {
       undoStack.push(Actions.ZONE_ON_ZERO)
@@ -120,7 +125,7 @@ Page({
 
   onTopClick(e) {
     const { attemptsMade, zoneOnAttempt, undoStack } = this.data
-
+    wx.vibrateLong()
     if (attemptsMade === 0) {
       undoStack.push(Actions.TOP_ON_ZERO)
       this.setData({
