@@ -18,7 +18,7 @@
 
   <view class="sessions-container">
     <van-swipe-cell wx:for="{{filteredSessions}}" wx:for-item="session" right-width="{{ (session.status === 'Completed') ? 0 : 60 }}">
-      <view class="group-row">
+      <view class="group-row" bind:tap="onSessionSelect" data-session-id="{{session.session_id}}" data-session-discipline="{{session.discipline}}">
         <view class="category-rounds">
           <view class="category-round" wx:for="{{session.groups}}" wx:for-item="group">
             <text class="category-text">{{group.category}}</text>

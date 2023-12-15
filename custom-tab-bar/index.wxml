@@ -19,11 +19,7 @@
     </view>
     <view class="menu-item {{(menuItem==='sessions' ? 'unclickable' : '')}}" bind:tap="onSessionsClick">
       <van-icon name="bell" size="40rpx" />
-      <text class="menu-text {{(menuItem==='sessions' ? 'bold-text' : '')}}">{{ language==='en' ? 'Sessions' : '比赛单元'}}</text>
-    </view>
-    <view class="menu-item {{(menuItem==='scores' ? 'unclickable' : '')}}" bind:tap="onScoresClick">
-      <van-icon name="notes-o" size="40rpx" />
-      <text class="menu-text {{(menuItem==='scores' ? 'bold-text' : '')}}">{{ language==='en' ? 'Scores' : '成绩'}}</text>
+      <text class="menu-text {{(menuItem==='sessions' ? 'bold-text' : '')}}">{{ language==='en' ? 'Sessions | Scores' : '比赛单元 | 成绩'}}</text>
     </view>
   </view>
   

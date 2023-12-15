@@ -54,11 +54,5 @@ Component({
       })
       this.setData({showMenu: false})
     },
-    onScoresClick(e) {
-      wx.switchTab({
-        url: '/pages/admin/completed-sessions/index'
-      })
-      this.setData({showMenu: false})
-    },
   }
 })

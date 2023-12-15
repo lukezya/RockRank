@@ -55,6 +55,20 @@ Page({
     }
   },
 
+  onSessionSelect(e) {
+    const { sessionId, sessionDiscipline } = e.currentTarget.dataset
+    console.log('Selected Session Id:')
+    console.log(sessionId)
+
+    console.log('and discipline:')
+    console.log(sessionDiscipline)
+
+    wx.navigateTo({
+      url: '/pages/admin/view-scores/index?sessionId=' + encodeURIComponent(sessionId)
+        + '&sessionDiscipline=' + encodeURIComponent(sessionDiscipline)
+    })
+  },
+
   async onCompleteSession(e) {
     const { sessionId } = e.currentTarget.dataset;
     const { categoryFilter, disciplineFilter } = this.data
@@ -92,7 +106,13 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-    const { event_id } = getApp().globalData;
+ 
+  },
+
+  onShow() {
+    const { categories, disciplines, event_id, language } = getApp().globalData
+    const translations = require(`./${language}.js`)
+
     wx.cloud.callFunction({
       name: 'get-sessions',
       data:{
@@ -103,35 +123,27 @@ Page({
       console.log(getSessionsResult)
   
       const { sessions } = getSessionsResult.result
+
+      const formattedCategories = categories.concat(translations.all_categories).map(category => ({
+        text: category,
+        value: category
+      }))
+      const formattedDisciplines = disciplines.concat(translations.all_disciplines).map(discipline => ({
+        text: discipline,
+        value: discipline
+      }))
   
       this.setData({
+        disciplines,
+        formattedCategories,
+        formattedDisciplines,
         sessions,
         filteredSessions: sessions,
+        categoryFilter: translations.all_categories,
+        disciplineFilter: translations.all_disciplines,
+        translations,
+        language
       })
-    })    
-  },
-
-  onShow() {
-    const { categories, disciplines, language } = getApp().globalData
-    const translations = require(`./${language}.js`)
-  
-    const formattedCategories = categories.concat(translations.all_categories).map(category => ({
-      text: category,
-      value: category
-    }))
-    const formattedDisciplines = disciplines.concat(translations.all_disciplines).map(discipline => ({
-      text: discipline,
-      value: discipline
-    }))
-
-    this.setData({
-      disciplines,
-      formattedCategories,
-      formattedDisciplines,
-      categoryFilter: translations.all_categories,
-      disciplineFilter: translations.all_disciplines,
-      translations,
-      language
     })
   }
 })

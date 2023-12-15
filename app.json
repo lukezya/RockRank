@@ -1,6 +1,7 @@
 {
   "entryPagePath": "pages/login/index",
-  "pages": ["pages/login/index",
+  "pages": [
+    "pages/login/index",
     "pages/playground/playground",
     "pages/events/index",
     "pages/sessions/index",
@@ -17,8 +18,6 @@
     "pages/admin/create-session/index",
     "pages/admin/set-info/index",
     "pages/admin/group-info/index",
-    
-    "pages/admin/completed-sessions/index",
     "pages/admin/view-scores/index",
     "pages/admin/score-info/index"
   ],
@@ -44,10 +43,6 @@
       {
         "pagePath": "pages/admin/all-sessions/index",
         "text": "Sessions"
-      },
-      {
-        "pagePath": "pages/admin/completed-sessions/index",
-        "text": "Scores"
       }
     ]
   },
