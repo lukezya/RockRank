@@ -1,0 +1,56 @@
+<view class="page-container">
+  <van-nav-bar bind:click-left="onBackClick">
+    <van-icon slot="left" name="arrow-left" />
+    <text slot="title" class="nav-bar-title">Score Info</text>
+  </van-nav-bar>
+
+  <view class="content-container">
+    <view class="name-row">
+      <text class="bib-info">14</text>
+      <text class="name-info">John Smith</text>
+    </view>
+
+    <view class="total-score-row">
+      <text class="total-score-info">T1 Z1 AT2 AT4</text>
+    </view>
+
+    <text class="route-scores-title">Route Scores</text>
+    <view class="route-scores-container">
+      <view class="route-score-row">
+        <text class="route-name-info">R1</text>
+        <text class="route-result-info">A5 Z4 T5</text>
+      </view>
+    </view>
+    
+    <van-popup show="{{ showRoute }}" bind:close="onRouteClose" custom-style="width: 95%">
+      <view class="edit-route-container">
+        <text class="route-title">Route R1</text>
+        <view class="route-results-row">
+          <view class="text-box">
+            <text class="text-label">A</text>
+            <input class="text-input" value="{{round}}" bindinput="onRoundInput"/>
+          </view>
+
+          <view class="text-box">
+            <text class="text-label">Z</text>
+            <input class="text-input" value="{{round}}" bindinput="onRoundInput"/>
+          </view>
+
+          <view class="text-box">
+            <text class="text-label">T</text>
+            <input class="text-input" value="{{round}}" bindinput="onRoundInput"/>
+          </view>
+        </view>
+      </view>
+      
+      <view class="buttons-container">
+        <button class="bottom-buttons" bind:tap="onRouteClose">Cancel</button>
+        <button class="bottom-buttons" bind:tap="onUpdateRoute" loading="{{updateLoading}}">Update</button>
+      </view>
+      
+    </van-popup>
+    <van-toast id="toasted" />
+
+  </view>
+
+</view>

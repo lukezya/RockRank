@@ -1,0 +1,82 @@
+/* pages/events/index.wxss */
+
+.page-container {
+  background-color: #F5F5F5;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-bar-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.events-container {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.event-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2%;
+  background-color: #FFF;
+  box-shadow: 0px 1px 11.7px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 2%;
+}
+
+.event-row:active {
+  background-color: #F3F3F3;
+}
+
+.event-img {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 26rpx;
+}
+
+.event-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 3%;
+}
+
+.event-name {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.event-date {
+  color: #666;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 13%;
+}
+
+.location-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #666;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.right-icon {
+  color: #999999;
+}

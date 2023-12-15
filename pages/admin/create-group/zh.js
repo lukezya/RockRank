@@ -1,0 +1,21 @@
+const translations = {
+  create_group: '创建运动员组别',
+  category: '组别:',
+  discipline: '项目:',
+  round: '轮次:',
+  climbers: '运动员:',
+  add_climber: '添加运动员',
+  climber_number: '运动员参赛号码:',
+  climber_name: '运动员名字:',
+  cancel: '取消',
+  add: '添加',
+  download: '下载',
+  randomize: '随机排序',
+  create: '创建',
+  all_fields: '请填写所有字段',
+  order: '出场顺序',
+  climber_number_title: '运动员参赛号码',
+  climber_name_title: '运动员名字',
+}
+
+module.exports = translations

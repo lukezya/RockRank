@@ -1,0 +1,192 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  align-content: space-between;
+  height: 77%;
+}
+
+.nav-bar-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.row-input {
+  display: flex;
+  direction: row;
+  margin-bottom: 5%;
+  align-items: center;
+}
+
+.text-label {
+  flex: 0.75;
+  font-family: Inter;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.text-input {
+  flex: 1;
+  border: 1rpx solid #000;
+  padding-left: 1%;
+  margin-left: 1%;
+}
+
+.discipline-box {
+  flex: 1;
+  border: 1rpx solid #000;
+  padding-left: 1%;
+  margin-left: 1%;
+  min-height: 45rpx;
+}
+
+.climber-text {
+  margin-bottom: 3%;
+  font-family: Inter;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.routes-container {
+  border: 1rpx solid #000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex: 1;
+  max-height: 45vh;
+}
+
+.group-row {
+  display: flex;
+  direction: row;
+  width: 100%;
+  padding: 3%;
+  border-bottom: 1rpx solid #F3F3F3;
+}
+
+.index-number {
+  flex: 0.5;
+}
+
+.climber-number {
+  flex: 1;
+}
+
+.climber-name {
+  flex: 1.5;
+}
+
+.swipe-delete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120rpx;
+  height: 100%;
+  background-color: #ff0000;
+  color: #FFF;
+}
+
+.create-button {
+  border-radius: 6px;
+  border: 1px solid #000;
+  background: #FFF;
+  width: 100%;
+  margin-top: auto;
+}
+
+.float-button-container {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.float-button {
+  width: 94rpx;
+  height: 94rpx;
+  background-color: #FFF;
+  border-radius: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0rpx 6rpx 12rpx rgba(0, 0, 0, 0.25));
+  position: relative;
+  margin-right: 3%;
+  margin-bottom: 4%;
+}
+
+.add-climber-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}
+
+.add-climber-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+  align-self: center;
+  margin-bottom: 5%;
+}
+
+.radio-type {
+  flex: 1;
+}
+
+.height-standby {
+  min-height: 103rpx;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row; 
+}
+
+.bottom-buttons {
+  width: 100%;
+}
+
+.climbers-button-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 5%;
+}
+
+.climber-button {
+  border-radius: 6px;
+  border: 1rpx solid #000;
+  width: 33%;
+  padding: 2% 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.climber-button:active {
+  background-color: #F3F3F3;
+}
+
+.climber-button-text {
+  color: #000;
+  font-family: Inter;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 400;
+}

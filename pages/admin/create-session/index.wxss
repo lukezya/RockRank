@@ -1,0 +1,119 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5% 5% 6% 5%;
+  align-content: space-between;
+  height: 77%;
+}
+
+.nav-bar-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.row-input {
+  display: flex;
+  direction: row;
+  margin-bottom: 5%;
+  align-items: center;
+}
+
+.text-label {
+  flex: 0.75;
+  font-family: Inter;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.text-input {
+  flex: 1;
+  border: 1rpx solid #000;
+  padding-left: 1%;
+  margin-left: 1%;
+}
+
+.discipline-box {
+  flex: 1;
+  border: 1rpx solid #000;
+  padding-left: 1%;
+  margin-left: 1%;
+  min-height: 45rpx;
+}
+
+.group-text {
+  margin-bottom: 3%;
+  font-family: Inter;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.groups-container {
+  border: 1rpx solid #000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex: 1;
+  max-height: 45vh;
+}
+
+.group-row {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #F3F3F3;
+  padding: 4%;
+  background-color: #FFF;
+}
+
+.category-round {
+  display: flex;
+  flex-direction: column;
+  flex: 0.8;
+}
+
+.category-text {
+  font-family: Inter;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.round-text {
+  color: #666;
+  font-family: Inter;
+  font-size: 22rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.discipline-text {
+  margin-top: 3%;
+}
+
+.checkbox-container {
+  flex: 0.2;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.create-button {
+  border-radius: 6px;
+  border: 1px solid #000;
+  background: #FFF;
+  width: 100%;
+  margin-top: auto;
+}

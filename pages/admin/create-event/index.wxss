@@ -1,0 +1,96 @@
+/* pages/admin/create-event/index.wxss */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  align-content: space-between;
+}
+
+.nav-bar-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.row-input {
+  display: flex;
+  direction: row;
+  margin-bottom: 5%;
+}
+
+.single-row-input {
+  display: flex;
+  direction: row;
+  margin-bottom: 5%;
+  align-items: center;
+}
+
+.text-label {
+  flex: 0.75;
+  font-family: Inter;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.text-input {
+  flex: 1;
+  border: 1rpx solid #000;
+  padding-left: 1%;
+  margin-left: 1%;
+}
+
+.uploader-align {
+  flex: 1;
+}
+
+.upload-box {
+  width: 180rpx;
+  height: 180rpx;
+  background-color: #F7F8FA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-range-box {
+  flex: 1;
+  border: 1rpx solid #000;
+  min-height: 45rpx;
+}
+
+.date-box {
+  margin-left: 3%;
+}
+
+.checkbox-gang {
+  flex: 1;
+}
+
+.checkbox-space {
+  margin-bottom: 2%;
+}
+
+.category-input {
+  flex: 1;
+  border: 1rpx solid #000;
+  padding-left: 1%;
+  margin-left: 1%;
+}
+
+.create-button {
+  border-radius: 6px;
+  border: 1px solid #000;
+  background: #FFF;
+  width: 100%;
+  margin-top: auto;
+}

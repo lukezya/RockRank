@@ -1,0 +1,36 @@
+<view class="page-container">
+  <van-nav-bar>
+    <text slot="title" class="nav-bar-title">{{translations.sessions}}</text>
+    <view slot="left" class="nav-bar-left">
+      <view class="nav-bar-menu" bind:tap="onBackClick">
+        <van-icon name="arrow-left" size="30rpx" />
+      </view>
+      <view class="nav-bar-home" bind:tap="onReturnHome">
+        <van-icon name="wap-home-o" size="40rpx"/>
+      </view>
+    </view>
+  </van-nav-bar>
+
+
+  <van-dropdown-menu>
+    <van-dropdown-item value="{{categoryFilter}}" options="{{ formattedCategories }}" bind:change="onCategorySelect" />
+    <van-dropdown-item value="{{disciplineFilter}}" options="{{ formattedDisciplines }}" bind:change="onDisciplineSelect" />
+  </van-dropdown-menu>
+
+  <view class="sessions-container">
+    <view class="session-row" wx:for="{{filteredSessions}}" wx:for-item="session" bind:tap="onSessionSelect" data-session-id="{{session.session_id}}">
+      <view class="category-rounds">
+        <view class="category-round" wx:for="{{session.groups}}" wx:for-item="group">
+          <text class="category-text">{{group.category}}</text>
+          <text class="round-text">{{group.round}}</text>
+        </view>
+      </view>
+      <view class="discipline-section">
+        <text class="discipline-text">{{session.discipline}}</text>
+      </view>
+      <view class="right-icon">
+        <van-icon name="arrow" size="36rpx"/>
+      </view>
+    </view>
+  </view>
+</view>

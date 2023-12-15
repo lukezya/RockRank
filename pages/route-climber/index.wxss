@@ -1,0 +1,158 @@
+/* pages/route-climber/index.wxss */
+
+.page-container {
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  height: 100vh
+}
+
+.route-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F6F6F4;
+  padding: 3% 3% 0% 3%;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.route-text {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.routes-list {
+  overflow-y: auto;
+  width: 100%;
+}
+
+.grid-board {
+  --td-grid-bg-color: #F6F6F4;
+  --td-grid-item-bg-color: #F6F6F4;
+}
+
+.route-box {
+  display: flex;
+  border-radius: 20px;
+  min-height: 120rpx;
+  min-width: 120rpx;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #DEE2E6;
+  background-color: #FFF;
+}
+
+.route-active {
+  border: 2rpx solid #000;
+}
+
+.line-divider {
+  align-self: center;
+  width: 75%;
+  border-top: 1px solid #DEE2E6;
+  margin: 2% 0%;
+}
+
+.climber-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F6F6F4;
+  padding-top: 3%;
+  flex: 1;
+  justify-self: flex-end;
+  overflow-y: auto;
+}
+
+.climber-board-full-height {
+  height: 100%;
+}
+
+.climber-text {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.button-board {
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  padding: 2% 0% 3% 0%;
+}
+
+.search-button {
+  border-radius: 20px 0px 0px 20px;
+  border: 1px solid #DEE2E6;
+  background: #FFF;
+  width: 77%;
+  --td-search-bg-color: #FFF;
+  --td-search-icon-color: #000;
+  border-right: 0;
+}
+
+.button-divider {
+  border-right: 1rpx solid #DEE2E6;
+  color: #FFF;
+  margin: 2% 0%;
+}
+
+.search-side-button {
+  border-radius: 0px 20px 20px 0px;
+  border: 1px solid #DEE2E6;
+  border-left: 0;
+  background: #FFF;
+  width: 23%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1%;
+}
+
+.climbers-list {
+  width: 100%;
+  overflow-y: auto;
+  flex-direction: column;
+}
+
+.climber-row {
+  display: flex;
+  flex-direction: row;
+  min-height: 120rpx;
+  align-items: center;
+  background-color: #FFF;
+  border-bottom: 1px solid #F5F5F5;
+  padding: 0% 5%;
+}
+
+.climber-row:active {
+  background-color: #F3F3F3;
+}
+
+.climber-bib {
+  font-family: Inter;
+  font-size: 34rpx;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-right: 5%;
+}
+
+.climber-name {
+  font-family: Inter;
+  font-size: 34rpx;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  flex: 1;
+}
+
+.right-icon {
+  color: #000;
+}

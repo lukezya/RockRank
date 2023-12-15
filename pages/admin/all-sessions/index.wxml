@@ -1,0 +1,49 @@
+<view class="page-container">
+  <van-nav-bar>
+    <text slot="title" class="nav-bar-title">{{translations.sessions}}</text>
+    <view slot="left" class="nav-bar-left">
+      <view class="nav-bar-menu" bind:tap="onMenuShow">
+        <van-icon name="wap-nav" size="40rpx" />
+      </view>
+      <view class="nav-bar-home" bind:tap="onReturnHome">
+        <van-icon name="wap-home-o" size="40rpx"/>
+      </view>
+    </view>
+  </van-nav-bar>
+
+  <van-dropdown-menu>
+    <van-dropdown-item value="{{categoryFilter}}" options="{{ formattedCategories }}" bind:change="onCategorySelect" />
+    <van-dropdown-item value="{{disciplineFilter}}" options="{{ formattedDisciplines }}" bind:change="onDisciplineSelect" />
+  </van-dropdown-menu>
+
+  <view class="sessions-container">
+    <van-swipe-cell wx:for="{{filteredSessions}}" wx:for-item="session" right-width="{{ (session.status === 'Completed') ? 0 : 60 }}">
+      <view class="group-row">
+        <view class="category-rounds">
+          <view class="category-round" wx:for="{{session.groups}}" wx:for-item="group">
+            <text class="category-text">{{group.category}}</text>
+            <text class="round-text">{{group.round}}</text>
+          </view>
+        </view>
+        <view class="discipline-section">
+          <text class="discipline-text">{{session.discipline}}</text>
+        </view>
+        <view class="status-section">
+          <text wx:if="{{session.status === 'Open'}}" class="open-text">{{translations.open}}</text>
+          <text wx:elif="{{session.status === 'Completed'}}" class="completed-text">{{translations.completed}}</text>
+        </view>
+        
+      </view>
+      <view slot="right" class="swipe-complete" bind:tap="onCompleteSession" data-session-id="{{session.session_id}}">
+        <van-icon name="success" size="48rpx" />
+      </view>
+    </van-swipe-cell>
+  </view>
+
+  <view class="float-button" bind:tap="onAddSessionClick">
+    <van-icon name="plus" size="48rpx" />
+  </view>
+
+</view>
+
+<event-side-menu showMenu="{{showMenu}}" menuItem="sessions" language="{{language}}" />

@@ -1,0 +1,15 @@
+{
+  "name": "ascendace",
+  "version": "1.0.0",
+  "description": "Rock Climbing Scoring MiniProgram",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.11.1",
+    "tdesign-miniprogram": "^1.2.4"
+  }
+}

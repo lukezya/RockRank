@@ -1,0 +1,30 @@
+<van-popup
+  show="{{ showMenu }}"
+  position="left"
+  custom-style="height: 100%; width:65%; display: flex; align-items: flex-start; padding-top: 20%;"
+  bind:close="onMenuClose"
+>
+  <view class="menu-container">
+    <view class="menu-item {{(menuItem==='event_info' ? 'unclickable' : '')}}" bind:tap="onEventInfoClick">
+      <van-icon name="info" size="40rpx" />
+      <text class="menu-text {{(menuItem==='event_info' ? 'bold-text' : '')}}">{{ language==='en' ? 'Event Info' : '比赛信息'}}</text>
+    </view>
+    <view class="menu-item {{(menuItem==='route_sets' ? 'unclickable' : '')}}" bind:tap="onRouteSetsClick">
+      <van-icon name="guide-o" size="40rpx" />
+      <text class="menu-text {{(menuItem==='route_sets' ? 'bold-text' : '')}}">{{ language==='en' ? 'Route Sets' : '线路集'}}</text>
+    </view>
+    <view class="menu-item {{(menuItem==='climber_groups' ? 'unclickable' : '')}}" bind:tap="onClimberGroupsClick">
+      <van-icon name="friends-o" size="40rpx" />
+      <text class="menu-text {{(menuItem==='climber_groups' ? 'bold-text' : '')}}">{{ language==='en' ? 'Climber Groups' : '运动员组别'}}</text>
+    </view>
+    <view class="menu-item {{(menuItem==='sessions' ? 'unclickable' : '')}}" bind:tap="onSessionsClick">
+      <van-icon name="bell" size="40rpx" />
+      <text class="menu-text {{(menuItem==='sessions' ? 'bold-text' : '')}}">{{ language==='en' ? 'Sessions' : '比赛单元'}}</text>
+    </view>
+    <view class="menu-item {{(menuItem==='scores' ? 'unclickable' : '')}}" bind:tap="onScoresClick">
+      <van-icon name="notes-o" size="40rpx" />
+      <text class="menu-text {{(menuItem==='scores' ? 'bold-text' : '')}}">{{ language==='en' ? 'Scores' : '成绩'}}</text>
+    </view>
+  </view>
+  
+</van-popup>

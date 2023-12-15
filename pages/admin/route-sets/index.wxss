@@ -1,0 +1,42 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.nav-bar-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.nav-bar-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar-home {
+  margin-left: 40rpx;
+}
+
+.route-sets-container {
+  overflow-y: auto;
+}
+
+.float-button {
+  width: 94rpx;
+  height: 94rpx;
+  background-color: #FFF;
+  border-radius: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 5vw;
+  bottom: 3vh;
+  filter: drop-shadow(0rpx 6rpx 12rpx rgba(0, 0, 0, 0.25));
+}

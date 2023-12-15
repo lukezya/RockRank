@@ -1,0 +1,57 @@
+<view class="page-container">
+  <van-nav-bar bind:click-left="onBackClick">
+    <van-icon slot="left" name="arrow-left" />
+    <text slot="title" class="nav-bar-title">{{translations.create_session}}</text>
+  </van-nav-bar>
+  <view class="form-container">
+    <view class="row-input">
+      <text class="text-label">{{translations.discipline}}</text>
+      <view class="discipline-box" bind:tap="onDisciplinesShow">
+        <text>{{discipline}}</text>
+      </view>
+      <van-popup show="{{ showDisciplinePopup }}" bind:close="onDisciplinesClose" position="bottom">
+        <van-picker
+        columns="{{ disciplines }}"
+        show-toolbar
+        title="Select Discipline"
+        bind:cancel="onDisciplineCancel"
+        bind:confirm="onDisciplineConfirm"/>
+      </van-popup>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.route_set}}</text>
+      <view class="discipline-box" bind:tap="onRouteSetsShow">
+        <text>{{routeSetName}}</text>
+      </view>
+      <van-popup show="{{ showRouteSetsPopup }}" bind:close="onRouteSetsClose" position="bottom">
+        <van-picker
+        columns="{{ filteredSets }}"
+        value-key="set_name"
+        show-toolbar
+        title="Select Route Set"
+        bind:cancel="onRouteSetsCancel"
+        bind:confirm="onRouteSetsConfirm"/>
+      </van-popup>
+    </view>
+
+    <text class="group-text">{{translations.groups}}</text>
+    <view class="groups-container">
+      <van-checkbox-group value="{{ selectedGroupIndexes }}" bind:change="onGroupSelect">
+        <view class="group-row" wx:for="{{filteredGroups}}" wx:for-item="climberGroup" wx:for-index="index">
+          <view class="category-round">
+            <text class="category-text">{{climberGroup.category}}</text>
+            <text class="round-text">{{climberGroup.round}}</text>
+            <text class="discipline-text">{{climberGroup.discipline}}</text>
+          </view>
+          <view class="checkbox-container">
+            <van-checkbox shape="square" name="{{index}}" checked-color="#000"/>
+          </view>
+        </view>
+      </van-checkbox-group>
+    </view>
+  </view>
+  <van-toast id="toasted" />
+  <button class="create-button" bind:tap="onCreateSessionClick" loading="{{creationLoading}}">{{translations.create}}</button>
+
+</view>

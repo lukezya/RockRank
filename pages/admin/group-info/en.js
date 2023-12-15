@@ -1,0 +1,23 @@
+const translations = {
+  group_info: 'Group Info',
+  category: 'Category:',
+  discipline: 'Discipline:',
+  round: 'Round:',
+  climbers: 'Climbers:',
+  add_climber: 'Add Climber',
+  climber_number: 'Climber Number:',
+  climber_name: 'Climber Name:',
+  cancel: 'Cancel',
+  add: 'Add',
+  download: 'Download',
+  randomize: 'Randomize',
+  edit: 'Edit',
+  done: 'Done',
+  all_fields: 'Please fill in all fields',
+  order: 'Order',
+  climber_number_title: 'Climber Number',
+  climber_name_title: 'Climber Name',
+  climbers_title: 'Climbers',
+}
+
+module.exports = translations

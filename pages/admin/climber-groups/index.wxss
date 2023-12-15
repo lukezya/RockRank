@@ -1,0 +1,90 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: #F6F6F4;
+}
+
+.nav-bar-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.nav-bar-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar-home {
+  margin-left: 40rpx;
+}
+
+.climber-groups-container {
+  overflow-y: auto;
+}
+
+.group-row {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #F9FAFA;
+  min-height: 120rpx;
+  padding: 5%;
+  background-color: #FFF;
+}
+
+.category-round {
+  display: flex;
+  flex-direction: column;
+  flex: 0.7;
+}
+
+.category-text {
+  font-family: Inter;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.round-text {
+  color: #666;
+  font-family: Inter;
+  font-size: 22rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.discipline-section {
+  flex: 0.3;
+  text-align: end;
+  align-self: center;
+}
+
+.discipline-text {
+  color: #000;
+  font-family: Inter;
+  font-size: 38rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.float-button {
+  width: 94rpx;
+  height: 94rpx;
+  background-color: #FFF;
+  border-radius: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 5vw;
+  bottom: 3vh;
+  filter: drop-shadow(0rpx 6rpx 12rpx rgba(0, 0, 0, 0.25));
+}

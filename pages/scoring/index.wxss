@@ -1,0 +1,170 @@
+/* pages/scoring/index.wxss */
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.top-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F6F6F4;
+}
+
+.category-info {
+  margin-top: 40rpx;
+  font-family: Inter;
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.round-info {
+  margin-top: 12rpx;
+  font-family: Inter;
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.name-row {
+  display: flex;
+  flex-direction: row;
+  margin: 48rpx 0;
+}
+
+.bib-info {
+  margin-right: 20rpx;
+  font-family: Inter;
+  font-size: 60rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.name-info {
+  font-family: Inter;
+  font-size: 60rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.score-button {
+  align-self: flex-end;
+  margin: 0 20rpx 40rpx 12rpx;
+  font-family: Inter;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background-color: #FFF;
+  border: 1rpx solid #DEE2E6;
+  border-radius: 90rpx;
+  padding: 2% 4%;
+  min-width: 20%;
+  text-align: center;
+}
+
+.score-button:active {
+  background-color: #F3F3F3;
+}
+
+.score-button-disabled {
+  color: #DEE2E6;
+  pointer-events: none;
+  user-select: none;
+  touch-action: none;
+  cursor: not-allowed;
+  border: 1px solid #F8F6FA;
+}
+
+.result-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  position: relative;
+  flex: 1;
+}
+
+.route-info {
+  font-family: Inter;
+  font-size: 44rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 60rpx 0;
+  position: absolute;
+  top: 0;
+}
+
+.result-text {
+  font-family: Inter;
+  font-size: 110rpx;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 30rpx;
+}
+
+.dns-text {
+  color: #F00;
+  font-family: Inter;
+  font-size: 110rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: absolute;
+  margin-top: 30rpx;
+}
+
+.action-info {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+}
+
+.button-info {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  padding: 9% 0;
+  flex: 1;
+  border-top: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  text-align: center;
+  position: relative;
+}
+
+.button-disabled {
+  color: #DEE2E6;
+  pointer-events: none;
+  user-select: none;
+  touch-action: none;
+  cursor: not-allowed;
+}
+
+.last-button {
+  border-right: 0;
+}
+
+.button-info:active {
+  background-color: #F3F3F3;
+}
+
+.button-text-info {
+  margin: 10% 0%;
+}
+
+.success-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

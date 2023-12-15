@@ -1,0 +1,35 @@
+<view class="page-container">
+  <!-- <van-nav-bar>
+    <text slot="title" class="nav-bar-title">ClimbScore</text>
+  </van-nav-bar> -->
+
+  <view class="content-container">
+    <view class="center-button" bind:tap="onScoringClick">
+      <text class="button-text">{{translations.scoring}}</text>
+    </view>
+    <van-popup show="{{ showScorePopup }}" bind:click-overlay="onScorePopupIgnore" custom-style="width: 70%" bind:after-enter="onScorePopupShow">
+      <view class="password-row">
+        <input password="true" class="password-box" value="{{scorePassword}}" focus="{{focusScorePassword}}" placeholder="{{translations.password}}" bind:input="onScorePasswordInput" />
+        <view class="confirm-button" bind:tap="onConfirmScorePassword">{{translations.confirm}}</view>
+      </view>
+    </van-popup>
+
+    <view class="center-button last-button" bind:tap="onEventControlClick">
+      <text class="button-text">{{translations.event_control}}</text>
+    </view>
+    <van-popup show="{{ showPasswordPrompt }}" bind:click-overlay="onPopupIgnore" custom-style="width: 70%" bind:after-enter="onPopupShow">
+      <view class="password-row">
+        <input password="true" class="password-box" value="{{password}}" focus="{{focusPassword}}" placeholder="{{translations.password}}" bind:input="onPasswordInput" />
+        <view class="confirm-button" bind:tap="onConfirmPassword">{{translations.confirm}}</view>
+      </view>
+    </van-popup>
+
+    <view class="language-container">
+      <view class="language-option" wx:for="{{languages}}" wx:for-index="index" wx:for-item="option" bind:tap="onLanguageChange" data-language="{{option.value}}">
+        <van-icon name="{{ language === option.value ? icon.checked : icon.unchecked }}" class="radio-icon" />
+        <text class="radio-text">{{option.text}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+

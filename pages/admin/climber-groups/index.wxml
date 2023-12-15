@@ -1,0 +1,37 @@
+<view class="page-container">
+  <van-nav-bar>
+    <text slot="title" class="nav-bar-title">{{translations.climber_groups}}</text>
+    <view slot="left" class="nav-bar-left">
+      <view class="nav-bar-menu" bind:tap="onMenuShow">
+        <van-icon name="wap-nav" size="40rpx" />
+      </view>
+      <view class="nav-bar-home" bind:tap="onReturnHome">
+        <van-icon name="wap-home-o" size="40rpx"/>
+      </view>
+    </view>
+  </van-nav-bar>
+
+  <van-dropdown-menu>
+    <van-dropdown-item value="{{categoryFilter}}" options="{{ formattedCategories }}" bind:change="onCategorySelect" />
+    <van-dropdown-item value="{{disciplineFilter}}" options="{{ formattedDisciplines }}" bind:change="onDisciplineSelect" />
+  </van-dropdown-menu>
+
+  <view class="climber-groups-container">
+    <view class="group-row" wx:for="{{filteredClimberGroups}}" wx:for-item="climberGroup" bind:tap="onClimberGroupClick" data-group-id="{{climberGroup.group_id}}">
+      <view class="category-round">
+        <text class="category-text">{{climberGroup.category}}</text>
+        <text class="round-text">{{climberGroup.round}}</text>
+      </view>
+      <view class="discipline-section">
+        <text class="discipline-text">{{climberGroup.discipline}}</text>
+      </view>
+    </view>
+  </view> 
+
+  <view class="float-button" bind:tap="onAddClimberGroupClick">
+    <van-icon name="plus" size="48rpx" />
+  </view>
+
+</view>
+
+<event-side-menu showMenu="{{showMenu}}" menuItem="climber_groups" language="{{language}}" />

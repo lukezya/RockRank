@@ -1,0 +1,60 @@
+<!--pages/admin/create-event/index.wxml-->
+<view class="page-container">
+  <van-nav-bar bind:click-left="onBackClick">
+    <van-icon slot="left" name="arrow-left" />
+    <text slot="title" class="nav-bar-title">{{translations.create_event}}</text>
+  </van-nav-bar>
+
+  <view class="form-container">
+    <view class="row-input">
+      <text class="text-label">{{translations.event_name}}</text>
+      <input class="text-input" bindinput="onNameInput" />
+    </view>
+
+    <view class="single-row-input">
+      <text class="text-label">{{translations.event_location}}</text>
+      <input class="text-input" bindinput="onLocationInput"/>
+    </view>
+
+    <view class="single-row-input">
+      <text class="text-label">{{translations.event_logo}}</text>
+      <view class="uploader-align">
+        <van-uploader max-count="1" upload-icon="photo" bind:after-read="onImageUpload" file-list="{{ imageList }}" preview-size="180rpx" bind:delete="onLogoDelete" />
+      </view>
+    </view>
+
+    <view class="single-row-input">
+      <text class="text-label">{{translations.event_date_range}}</text>
+      <view class="date-range-box" bind:tap="onCalendarSelect">
+        <van-icon name="calendar-o" class="date-box"/>
+        <text class="date-box">{{confirmedDate}}</text>
+      </view>
+      <van-calendar
+        show="{{ showCalendar }}"
+        type="range"
+        bind:close="onCalendarClose"
+        bind:confirm="onCalendarConfirm"
+        show-confirm="{{false}}"
+        max-date="{{maxDate}}"
+        allow-same-day
+      />
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.disciplines}}</text>
+      <van-checkbox-group value="{{ selectedDisciplines }}" bind:change="onDisciplineChange" class="checkbox-gang">
+        <view class="checkbox-space" wx:for="{{disciplines}}" wx:for-item="discipline" wx:key="value">
+          <van-checkbox name="{{discipline}}" shape="square" checked-color="#000">{{discipline}}</van-checkbox>
+        </view>
+      </van-checkbox-group>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.categories}}</text>
+      <textarea class="category-input" placeholder="Enter categories - each on a new line" bindinput="onCategoryInput" cursor-spacing="130" />
+    </view>
+  </view>
+  
+  <button class="create-button" bind:tap="onCreateEvent" loading="{{creationLoading}}">{{translations.create}}</button>
+  <van-toast id="toasted" />
+</view>

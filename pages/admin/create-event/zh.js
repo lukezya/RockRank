@@ -1,0 +1,16 @@
+const translations = {
+  create_event: '创建比赛',
+  event_name: '比赛名称:',
+  event_location: '比赛地点:',
+  event_logo: '比赛LOGO:',
+  event_date_range: '比赛时间:',
+  disciplines: '项目:',
+  categories: '组别:',
+  create: '创建',
+  bouldering: '攀石赛',
+  lead: '难度赛',
+  speed: '速度赛',
+  bouldering_and_lead: '全能赛'
+}
+
+module.exports = translations

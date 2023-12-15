@@ -1,0 +1,60 @@
+<view class="page-container">
+  <van-nav-bar bind:click-left="onBackClick">
+    <van-icon slot="left" name="arrow-left" />
+    <text slot="title" class="nav-bar-title">{{translations.scores}}</text>
+  </van-nav-bar>
+
+  <van-dropdown-menu>
+    <van-dropdown-item value="{{groupId}}" options="{{ formattedGroups }}" bind:change="onGroupSelect" />
+  </van-dropdown-menu>
+
+  <view class="scores-container">
+    <view class="score-row" wx:for="{{filteredScores}}" wx:for-item="score" wx:for-index="index" bind:tap="onScoreSelect" data-score-index="{{index}}">
+      <text class="score-text position-text">[{{index + 1}}]</text>
+      <text class="score-text number-text">{{score.climberNumber}}</text>
+      <text class="score-text name-text">{{score.climberName}}</text>
+      <text class="score-text result-text">T{{score.total_tops}} Z{{score.total_zones}} AT{{score.total_attempts_to_top}} AZ{{score.total_attempts_to_zone}}</text>
+    </view>
+  </view>
+
+  <view class="button-container">
+    <view class="button-box download-button" bind:tap="onDownloadScores">{{translations.download}}</view>
+    <view class="button-box create-button {{groupId === 'All Groups' ? 'disabled-button' : ''}}" bind:tap="onCreateGroupShow">{{translations.create_group}}</view>
+    <van-popup show="{{ showCreateGroup }}" bind:close="onCreateGroupClose" custom-style="width: 75%">
+      <view class="create-group-container">
+        <text class="create-group-title">{{translations.create_group}}</text>
+        <view class="row-input">
+          <text class="text-label">{{translations.category}}</text>
+          <text class="text-show">{{category}}</text>
+        </view>
+        <view class="row-input">
+          <text class="text-label">{{translations.discipline}}</text>
+          <text class="text-show">{{discipline}}</text>
+        </view>
+        <view class="row-input">
+          <text class="text-label">{{translations.round}}</text>
+          <input class="text-input" value="{{round}}" bindinput="onRoundInput"/>
+        </view>
+        <view class="row-input">
+          <text class="text-label">{{translations.quota}}</text>
+          <input class="text-input" value="{{quota}}" bindinput="onQuotaInput"/>
+        </view>
+        <view>
+          <text class="text-label">{{translations.order}}</text>
+          <van-radio-group class="radio-type" value="{{ order }}" bind:change="onOrderChange">
+            <van-radio name="FIRST_RANK_LAST">{{translations.first_last}}</van-radio>
+            <van-radio name="FIRST_RANK_FIRST">{{translations.first_first}}</van-radio>
+          </van-radio-group>
+        </view>
+      </view>
+      
+      <view class="buttons-container">
+        <button class="bottom-buttons" bind:tap="onCreateGroupClose">{{translations.cancel}}</button>
+        <button class="bottom-buttons" bind:tap="onCreateGroup" loading="{{creationLoading}}">{{translations.create}}</button>
+      </view>
+      
+    </van-popup>
+    <van-toast id="toasted" />
+  </view>
+
+</view>

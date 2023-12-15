@@ -1,0 +1,56 @@
+<view class="page-container">
+  <van-nav-bar bind:click-left="onBackClick">
+    <van-icon slot="left" name="arrow-left" />
+    <text slot="title" class="nav-bar-title">{{translations.score_info}}</text>
+  </van-nav-bar>
+
+  <view class="content-container">
+    <view class="name-row">
+      <text class="bib-info">{{score.climberNumber}}</text>
+      <text class="name-info">{{score.climberName}}</text>
+    </view>
+
+    <view class="total-score-row">
+      <text class="total-score-info">T{{score.total_tops}} Z{{score.total_zones}} AT{{score.total_attempts_to_top}} AZ{{score.total_attempts_to_zone}}</text>
+    </view>
+
+    <text class="route-scores-title">{{translations.route_scores}}</text>
+    <view class="route-scores-container">
+      <view class="route-score-row" wx:for="{{ routes }}" wx:for-item="route" wx:for-index="index" bind:tap="onRouteScoreSelect" data-route-index="{{index}}">
+        <text class="route-name-info">{{route.routeName}}</text>
+        <text class="route-result-info">{{route.routeResult}}</text>
+      </view>
+    </view>
+    
+    <van-popup show="{{ showRouteScore }}" bind:close="onRouteClose" custom-style="width: 95%">
+      <view class="edit-route-container">
+        <text class="route-title">{{translations.locale === 'zh' ? selectedRouteScore.routeName + translations.route : translations.route + ' ' + selectedRouteScore.routeName}}</text>
+        <view class="route-results-row">
+          <view class="text-box">
+            <text class="text-label">A</text>
+            <input class="text-input" value="{{selectedRouteScore.attemptsMade}}" bindinput="onAttemptsInput"/>
+          </view>
+
+          <view class="text-box">
+            <text class="text-label">Z</text>
+            <input class="text-input" value="{{selectedRouteScore.zoneOnAttempt}}" bindinput="onZoneAttemptInput"/>
+          </view>
+
+          <view class="text-box">
+            <text class="text-label">T</text>
+            <input class="text-input" value="{{selectedRouteScore.topOnAttempt}}" bindinput="onTopAttemptInput"/>
+          </view>
+        </view>
+      </view>
+      
+      <view class="buttons-container">
+        <button class="bottom-buttons" bind:tap="onRouteClose">{{translations.cancel}}</button>
+        <button class="bottom-buttons" bind:tap="onUpdateRoute" loading="{{updateLoading}}">{{translations.update}}</button>
+      </view>
+      
+    </van-popup>
+    <van-toast id="toasted" />
+
+  </view>
+
+</view>

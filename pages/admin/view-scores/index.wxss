@@ -1,0 +1,152 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: #F6F6F4;
+}
+
+.nav-bar-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.scores-container {
+  overflow-y: auto;
+}
+
+.score-row {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #F3F3F3;
+  padding: 4% 5%;
+  background-color: #FFF;
+}
+
+.score-row:first-child {
+  border-top: 1rpx solid #F3F3F3;
+}
+
+.score-text {
+  color: #000;
+  font-family: Inter;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.position-text {
+  flex: 1;
+}
+
+.number-text {
+  flex: 1;
+}
+
+.name-text {
+  flex: 4;
+}
+
+.result-text {
+  flex: 4;
+  letter-spacing: 2rpx;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  height: 10%;
+}
+
+.button-box {
+  flex: 1;
+  background-color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.download-button {
+  border-top: 1rpx solid #000;
+  border-right: 1rpx solid #000;
+}
+
+.create-button {
+  border-top: 1rpx solid #000;
+}
+
+.disabled-button {
+  color: #DEE2E6;
+  pointer-events: none;
+  user-select: none;
+  touch-action: none;
+  cursor: not-allowed;
+  border-top: 1rpx solid #F8F6FA;
+}
+
+.create-group-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}
+
+.create-group-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+  align-self: center;
+  margin-bottom: 5%;
+}
+
+.row-input {
+  display: flex;
+  direction: row;
+  margin-bottom: 5%;
+  align-items: center;
+}
+
+.text-label {
+  flex: 0.75;
+  font-family: Inter;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.text-input {
+  flex: 1;
+  border: 1rpx solid #000;
+  padding-left: 1%;
+  margin-left: 1%;
+}
+
+.text-show {
+  flex: 1;
+  padding-left: 1%;
+  margin-left: 1%;
+  font-family: Inter;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row; 
+}
+
+.bottom-buttons {
+  width: 100%;
+}

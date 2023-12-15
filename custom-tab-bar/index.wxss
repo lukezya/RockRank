@@ -1,0 +1,27 @@
+.menu-container {
+  padding: 10%;
+}
+
+.menu-item {
+  margin-bottom: 15%;
+}
+
+.menu-text {
+  color: #48434B;
+  font-family: Rubik;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 32rpx;
+}
+
+.bold-text {
+  font-weight: 700;
+}
+
+.unclickable {
+  pointer-events: none;
+  user-select: none;
+  touch-action: none;
+  cursor: not-allowed;
+}

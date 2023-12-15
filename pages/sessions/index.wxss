@@ -1,0 +1,91 @@
+/* pages/sessions/index.wxss */
+
+.page-container {
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.nav-bar-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 40rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.nav-bar-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar-home {
+  margin-left: 40rpx;
+}
+
+.sessions-container {
+  overflow-y: auto;
+}
+
+.session-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5% 2% 5% 5%;
+  min-height: 120rpx;
+  background-color: #FFF;
+  border-bottom: 1rpx solid #F3F3F3;
+}
+
+.session-row:first-child {
+  border-top: 1rpx solid #F3F3F3;
+}
+
+.session-row:active {
+  background-color: #F3F3F3;
+}
+
+.category-rounds {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  flex: 5.5;
+}
+
+.category-round {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5%;
+}
+
+.category-text {
+  font-family: Inter;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.round-text {
+  color: #666;
+  font-family: Inter;
+  font-size: 22rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.discipline-section {
+  text-align: end;
+  margin-right: 2%;
+  flex: 3.5;
+}
+
+.right-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #999999;
+  flex: 1;
+}

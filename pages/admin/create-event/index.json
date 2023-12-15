@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-toast": "@vant/weapp/toast/index"
+  }
+}

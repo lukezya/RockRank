@@ -1,0 +1,44 @@
+<view class="page-container">
+  <van-nav-bar bind:click-left="onReturnHome">
+    <van-icon slot="left" name="wap-home-o" size="40rpx" />
+  </van-nav-bar>
+
+  <view hidden="{{ searchFocus }}" class="route-board">
+    <text class="route-text">{{translations.select_route}}</text>
+    <view class="routes-list">
+      <t-grid t-class="grid-board" column="{{5}}">
+        <t-grid-item wx:for="{{routes}}" wx:for-index="index" wx:key="index">
+          <view class="route-box {{index === routeIndex ? 'route-active' : ''}}" bind:tap="onRouteChange" data-route-index="{{index}}">
+            {{item.routeName}}
+          </view>
+        </t-grid-item>
+      </t-grid>
+    </view>
+  </view>
+
+  <view hidden="{{ searchFocus }}" class="line-divider" />
+
+  <view class="climber-board">
+    <text class="climber-text">{{translations.select_climber}}</text>
+    <view class="button-board">
+      <t-search shape="round" t-class="search-button" bind:change="onSearchChange" clearable="{{false}}" bind:focus="onSearchFocus" value="{{searchQuery}}" left-icon="">
+        <van-icon name="search" size="48rpx" slot="left-icon" />
+      </t-search>
+      <view class="button-divider" />
+      <view hidden="{{searchFocus}}" class="search-side-button">
+        <van-icon name="scan" size="48rpx" />
+      </view>
+      <view hidden="{{!searchFocus}}" class="search-side-button" bind:tap="onHomeClick">
+        <van-icon name="wap-home-o" size="48rpx" />
+      </view>
+    </view>
+    <scroll-view scroll-y enable-flex class="climbers-list"	scroll-into-view="{{ climberFocus }}">
+      <view class="climber-row" wx:for="{{searchedClimbers}}" wx:for-item="climber" wx:for-index="index" wx:key="index" bind:tap="onClimberSelect" data-climber-index="{{index}}" id="{{'climberRow' + index}}">
+        <text class="climber-bib">{{climber.climberNumber}}</text>
+        <text class="climber-name">{{climber.climberName}}</text>
+        <van-icon class="right-icon" name="arrow" size="36rpx"/>
+      </view>
+    </scroll-view>
+  </view>
+
+</view>

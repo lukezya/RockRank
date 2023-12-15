@@ -1,0 +1,56 @@
+{
+  "entryPagePath": "pages/login/index",
+  "pages": ["pages/login/index",
+    "pages/playground/playground",
+    "pages/events/index",
+    "pages/sessions/index",
+    "pages/route-climber/index",
+    "pages/scoring/index",
+    "pages/admin/add-event/index",
+    "pages/admin/create-event/index",
+    "pages/admin/event-info/index",
+    "pages/admin/route-sets/index",
+    "pages/admin/create-set/index",
+    "pages/admin/climber-groups/index",
+    "pages/admin/create-group/index",
+    "pages/admin/all-sessions/index",
+    "pages/admin/create-session/index",
+    "pages/admin/set-info/index",
+    "pages/admin/group-info/index",
+    
+    "pages/admin/completed-sessions/index",
+    "pages/admin/view-scores/index",
+    "pages/admin/score-info/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/admin/event-info/index",
+        "text": "Event Info"
+      },
+      {
+        "pagePath": "pages/admin/route-sets/index",
+        "text": "Route Sets"
+      },
+      {
+        "pagePath": "pages/admin/climber-groups/index",
+        "text": "Climber Groups"
+      },
+      {
+        "pagePath": "pages/admin/all-sessions/index",
+        "text": "Sessions"
+      },
+      {
+        "pagePath": "pages/admin/completed-sessions/index",
+        "text": "Scores"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

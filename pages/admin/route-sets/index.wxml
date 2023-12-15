@@ -1,0 +1,30 @@
+<view class="page-container">
+  <van-nav-bar>
+    <text slot="title" class="nav-bar-title">{{translations.route_sets}}</text>
+    <view slot="left" class="nav-bar-left">
+      <view class="nav-bar-menu" bind:tap="onMenuShow">
+        <van-icon name="wap-nav" size="40rpx" />
+      </view>
+      <view class="nav-bar-home" bind:tap="onReturnHome">
+        <van-icon name="wap-home-o" size="40rpx"/>
+      </view>
+    </view>
+  </van-nav-bar>
+
+  <van-dropdown-menu>
+    <van-dropdown-item value="{{ disciplineFilter }}" options="{{ formattedDisciplines }}" bind:change="onDisciplineSelect" />
+  </van-dropdown-menu>
+
+  <view class="route-sets-container">
+    <van-cell-group wx:for="{{filteredRouteSets}}" wx:for-item="set">
+      <van-cell title="{{set.set_name}}" value="{{set.discipline}}" bind:tap="onSetClick" data-set-id="{{set.set_id}}"/>
+    </van-cell-group>
+  </view>
+  
+  <view class="float-button" bind:tap="onAddSetClick">
+    <van-icon name="plus" size="48rpx" />
+  </view>
+
+</view>
+
+<event-side-menu showMenu="{{showMenu}}" menuItem="route_sets" language="{{language}}" />

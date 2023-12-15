@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "t-search": "/miniprogram_npm/tdesign-miniprogram/search/search",
+    "t-grid": "/miniprogram_npm/tdesign-miniprogram/grid/grid",
+    "t-grid-item": "/miniprogram_npm/tdesign-miniprogram/grid-item/grid-item"
+  }
+}

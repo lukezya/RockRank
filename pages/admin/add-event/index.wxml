@@ -1,0 +1,25 @@
+<view class="page-container">
+  <van-nav-bar bind:click-left="onReturnHome">
+    <van-icon slot="left" name="wap-home-o" size="40rpx" />
+    <text slot="title" class="nav-bar-title">{{translations.events}}</text>
+  </van-nav-bar>
+
+  <view class="events-container">
+    <view wx:for="{{events}}" wx:key="index" class="event-row" bind:tap="onEventClick" data-event-id="{{item._id}}">
+      <image class="event-img" src="{{item.logo_url}}" />
+      <view class="event-info">
+        <text class="event-name">{{item.name}}</text>
+        <text class="event-date">{{item.dateRange}}</text>
+        <view class="location-info">
+          <van-icon name="location"/>
+          <text>{{item.location}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="float-button" bind:tap="onAddEventClick">
+    <van-icon name="plus" size="48rpx" />
+  </view>
+</view>
+

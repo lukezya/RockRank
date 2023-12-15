@@ -1,0 +1,90 @@
+<view class="page-container">
+  <van-nav-bar bind:click-left="onBackClick">
+    <van-icon slot="left" name="arrow-left" />
+    <text slot="title" class="nav-bar-title">{{translations.set_info}}</text>
+  </van-nav-bar>
+  <view class="form-container">
+    <view class="row-input">
+      <text class="text-label">{{translations.set_name}}</text>
+      <input class="text-input  {{ editMode ? '' : 'text-input-disabled'}}" disabled="{{ !editMode }}" value="{{setName}}" bind:input="onSetNameInput" />
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.discipline}}</text>
+      <view class="discipline-box {{ editMode ? 'discipline-border' : 'unclickable'}}" bind:tap="onDisciplinesShow">
+        <text>{{discipline}}</text>
+      </view>
+      <van-popup show="{{ showDisciplinePopup }}" bind:close="onDisciplinesClose" position="bottom">
+        <van-picker
+        columns="{{ disciplines }}"
+        show-toolbar
+        title="Select Discipline"
+        bind:cancel="onDisciplineCancel"
+        bind:confirm="onDisciplineConfirm"/>
+      </van-popup>
+    </view>
+
+    <text class="routes-text">{{translations.routes}}</text>
+    <view class="routes-container">
+      <van-swipe-cell right-width="{{ 60 }}" wx:for="{{routes}}" wx:for-item="route" wx:for-index="index" wx:key="index" disabled="{{!editMode}}">
+        <view class="route-row" >
+          <text class="index-number">[{{index + 1}}]</text>
+          <text class="route-name">{{route.routeName}}</text>
+          <text class="route-type">{{route.routeType}}</text>
+          <text wx:if="{{route.routeType === 'Bouldering'}}" class="route-extra">{{route.numberZones}} {{route.numberZones === '1' ? 'Zone' : 'Zones'}}</text>
+          <text wx:elif="{{route.routeType === 'Lead'}}" class="route-extra">{{route.numberHolds}} {{route.numberHolds === '1' ? 'Hold' : 'Holds'}}</text>
+          <text wx:else class="route-extra"></text>
+        </view>
+        <view slot="right" class="swipe-delete" bind:tap="onDeleteRoute" data-route-index="{{index}}">
+          <van-icon name="delete-o" size="48rpx" />
+        </view>
+      </van-swipe-cell>
+
+      <view class="float-button-container" hidden="{{!editMode}}">
+        <view class="float-button" bind:tap="onAddRouteClick">
+          <van-icon name="plus" size="48rpx" />
+        </view>
+        <van-popup show="{{ showAddRoute }}" bind:close="onAddRouteClose" custom-style="width: 75%">
+          <view class="add-route-container">
+            <text class="add-route-title">{{translations.add_route}}</text>
+            <view class="row-input">
+              <text class="text-label">{{translations.route_name}}</text>
+              <input class="text-input" value="{{routeName}}" bindinput="onRouteNameInput"/>
+            </view>
+            <view class="row-input">
+              <text class="text-label">{{translations.route_type}}</text>
+              <van-radio-group class="radio-type" value="{{ routeType }}" bind:change="onRouteTypeChange">
+                <van-radio name="Bouldering">{{translations.bouldering}}</van-radio>
+                <van-radio name="Lead">{{translations.lead}}</van-radio>
+                <van-radio name="Speed">{{translations.speed}}</van-radio>
+              </van-radio-group>
+            </view>
+            <view wx:if="{{routeType === 'Bouldering'}}" class="row-input">
+              <text class="text-label">{{translations.number_of_zones}}</text>
+              <input class="text-input" value="{{numberZones}}" bindinput="onNumberZonesInput" />
+            </view>
+            <view wx:elif="{{routeType === 'Lead'}}" class="row-input">
+              <text class="text-label">{{translations.number_of_holds}}</text>
+              <input class="text-input" value="{{numberHolds}}" bindinput="onNumberHoldsInput" />
+            </view>
+            <view wx:else class="height-standby">
+            </view>
+          </view>
+          
+          <view class="buttons-container">
+            <button class="bottom-buttons" bind:tap="onAddRouteClose">{{translations.cancel}}</button>
+            <button class="bottom-buttons" bind:tap="onAddRouteAdd">{{translations.add}}</button>
+          </view>
+          
+        </van-popup>
+      </view>
+    </view>
+
+  </view>
+  <van-toast id="toasted" />
+  <button wx:if="{{!editMode}}" class="edit-button" bind:tap="onEditClick">{{translations.edit}}</button>
+  
+  <button wx:else class="done-button" bind:tap="onDoneClick" loading="{{updateLoading}}">{{translations.done}}</button>
+
+
+</view>

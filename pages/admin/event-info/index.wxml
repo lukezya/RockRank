@@ -1,0 +1,76 @@
+<view class="page-container">
+  <van-nav-bar>
+    <text slot="title" class="nav-bar-title">{{translations.event_info}}</text>
+    <view slot="left" class="nav-bar-left">
+      <view class="nav-bar-menu" bind:tap="onMenuShow">
+        <van-icon name="wap-nav" size="40rpx" />
+      </view>
+      <view class="nav-bar-home" bind:tap="onReturnHome">
+        <van-icon name="wap-home-o" size="40rpx"/>
+      </view>
+    </view>
+  </van-nav-bar>
+
+  <view class="form-container">
+    <view class="row-input">
+      <text class="text-label">{{translations.event_name}}</text>
+      <input class="text-input {{ editMode ? '' : 'text-input-disabled'}}" disabled="{{ !editMode }}" value="{{eventName}}" bindinput="onNameInput"/>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.event_location}}</text>
+      <input class="text-input {{ editMode ? '' : 'text-input-disabled'}}" disabled="{{ !editMode }}" value="{{eventLocation}}" bindinput="onLocationInput"/>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.event_logo}}</text>
+      <view class="uploader-align">
+        <van-uploader max-count="1" upload-icon="photo" bind:after-read="onImageUpload" file-list="{{ imageList }}" preview-size="180rpx" bind:delete="onLogoDelete" disabled="{{!editMode}}" deletable="{{editMode}}" />
+      </view>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.event_date_range}}</text>
+      <view class="date-range-box {{ editMode ? '' : 'disable-date'}}" bind:tap="{{ editMode ? 'onCalendarSelect' : ''}}">
+        <van-icon name="calendar-o" class="date-box"/>
+        <text class="date-box">{{eventDateRange}}</text>
+      </view>
+      <van-calendar
+        show="{{ showCalendar }}"
+        type="range"
+        bind:close="onCalendarClose"
+        bind:confirm="onCalendarConfirm"
+        show-confirm="{{false}}"
+        max-date="{{maxDate}}"
+        default-date="{{[startDate, endDate]}}"
+        allow-same-day
+      />
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.disciplines}}</text>
+      <view wx:if="{{!editMode}}" class="checkbox-gang">
+        <view class="checkbox-space" wx:for="{{disciplines}}" wx:for-item="discipline" wx:key="value">
+          <van-checkbox name="{{discipline}}" shape="square" checked-color="#000" disabled value='true'>{{discipline}}</van-checkbox>
+        </view>
+      </view>
+        
+      <van-checkbox-group wx:if="{{editMode}}" value="{{ disciplines }}" bind:change="onDisciplineChange" class="checkbox-gang">
+        <view class="checkbox-space" wx:for="{{availableDisciplines}}" wx:for-item="discipline" wx:key="value">
+          <van-checkbox name="{{discipline}}" shape="square" checked-color="#000">{{discipline}}</van-checkbox>
+        </view>
+      </van-checkbox-group>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.categories}}</text>
+      <textarea class="category-input {{ editMode ? '' : 'disable-category'}}" placeholder="Enter categories, each on a new line" disabled="{{ !editMode }}" value="{{categories}}" bindinput="onCategoryInput" />
+    </view>
+  </view>
+  <button wx:if="{{!editMode}}" class="bottom-button" bind:tap="onEditClick">{{translations.edit}}</button>
+  
+  <button wx:else class="bottom-button" bind:tap="onDoneClick" loading="{{updateLoading}}">{{translations.done}}</button>
+  
+</view>
+
+<event-side-menu showMenu="{{showMenu}}" menuItem="event_info" language="{{language}}" />

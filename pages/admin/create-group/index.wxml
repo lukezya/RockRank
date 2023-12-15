@@ -1,0 +1,92 @@
+<view class="page-container">
+  <van-nav-bar bind:click-left="onBackClick">
+    <van-icon slot="left" name="arrow-left" />
+    <text slot="title" class="nav-bar-title">{{translations.create_group}}</text>
+  </van-nav-bar>
+  <view class="form-container">
+    <view class="row-input">
+      <text class="text-label">{{translations.category}}</text>
+      <view class="discipline-box" bind:tap="onCategoriesShow">
+        <text>{{category}}</text>
+      </view>
+      <van-popup show="{{ showCategoryPopup }}" bind:close="onCategoriesClose" position="bottom">
+        <van-picker
+        columns="{{ categories }}"
+        show-toolbar
+        title="Select Category"
+        bind:cancel="onCategoriesCancel"
+        bind:confirm="onCategoryConfirm"/>
+      </van-popup>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.discipline}}</text>
+      <view class="discipline-box" bind:tap="onDisciplinesShow">
+        <text>{{discipline}}</text>
+      </view>
+      <van-popup show="{{ showDisciplinePopup }}" bind:close="onDisciplinesClose" position="bottom">
+        <van-picker
+        columns="{{ disciplines }}"
+        show-toolbar
+        title="Select Discipline"
+        bind:cancel="onDisciplineCancel"
+        bind:confirm="onDisciplineConfirm"/>
+      </van-popup>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.round}}</text>
+      <input class="text-input" bind:input="onRoundInput" />
+    </view>
+
+    <text class="climber-text">{{translations.climbers}}</text>
+    <view class="routes-container">
+      <van-swipe-cell right-width="{{ 60 }}" wx:for="{{climbers}}" wx:for-item="climber" wx:for-index="index">
+        <view class="group-row" >
+          <text class="index-number">[{{index + 1}}]</text>
+          <text class="climber-number">{{climber.climberNumber}}</text>
+          <text class="climber-name">{{climber.climberName}}</text>
+        </view>
+        <view slot="right" class="swipe-delete" bind:tap="onDeleteClimber" data-group-index="{{index}}">
+          <van-icon name="delete-o" size="48rpx" />
+        </view>
+      </van-swipe-cell>
+
+      <view class="float-button-container">
+        <view class="float-button" bind:tap="onAddClimberClick">
+          <van-icon name="plus" size="48rpx" />
+        </view>
+        <van-popup show="{{ showAddClimber }}" bind:close="onAddClimberClose" custom-style="width: 75%">
+          <view class="add-climber-container">
+            <text class="add-climber-title">{{translations.add_climber}}</text>
+            <view class="row-input">
+              <text class="text-label">{{translations.climber_number}}</text>
+              <input class="text-input" value="{{climberNumber}}" bindinput="onClimberNumberInput"/>
+            </view>
+            <view class="row-input">
+              <text class="text-label">{{translations.climber_name}}</text>
+              <input class="text-input" value="{{climberName}}" bindinput="onClimberNameInput"/>
+            </view>
+          </view>
+          
+          <view class="buttons-container">
+            <button class="bottom-buttons" bind:tap="onAddClimberClose">{{translations.cancel}}</button>
+            <button class="bottom-buttons" bind:tap="onAddClimberAdd">{{translations.add}}</button>
+          </view>
+        </van-popup>
+      </view>
+    </view>
+
+    <view class="climbers-button-board">
+      <view class="climber-button" bind:tap="onDownloadClimbers">
+        <text class="climber-button-text">{{translations.download}}</text>
+      </view>
+      <view class="climber-button" bind:tap="onRandomizeClimbers">
+        <text class="climber-button-text">{{translations.randomize}}</text>
+      </view> 
+    </view>
+  </view>
+  <van-toast id="toasted" />
+  <button class="create-button" bind:tap="onCreateGroupClick" loading="{{creationLoading}}">{{translations.create}}</button>
+
+</view>
