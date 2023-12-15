@@ -69,11 +69,11 @@ Page({
   },
 
   async onCreateEvent(e) {
-    const {categories, selectedDisciplines, startDate, endDate, eventLocation, eventName, imageList} = this.data
+    const {categories, selectedDisciplines, startDate, endDate, eventLocation, eventName, imageList, translations} = this.data
     // check if all data is filled
     if (!categories || selectedDisciplines.length == 0 || !startDate || !endDate || !eventLocation || !eventName || imageList.length == 0) {
       Toast.fail({
-        message: 'Please fill in all fields',
+        message: translations.all_fields,
         selector: '#toasted'
       });
     } else {

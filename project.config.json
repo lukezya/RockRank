@@ -13,7 +13,7 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "ignoreUploadUnusedFiles": false
+    "ignoreUploadUnusedFiles": true
   },
   "condition": {},
   "editorSetting": {
@@ -25,7 +25,12 @@
   "libVersion": "3.2.2",
   "packOptions": {
     "ignore": [],
-    "include": []
+    "include": [
+      {
+        "value": "pages",
+        "type": "folder"
+      }
+    ]
   },
   "appid": "wx5c40c30cd8893cf6"
 }

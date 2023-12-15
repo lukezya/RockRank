@@ -16,6 +16,8 @@ const translations = {
   order: '出场顺序',
   climber_number_title: '运动员参赛号码',
   climber_name_title: '运动员名字',
+  select_category: '选择组别',
+  select_discipline: '选择项目',
 }
 
 module.exports = translations

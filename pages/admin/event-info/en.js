@@ -14,6 +14,7 @@ const translations = {
   bouldering_and_lead: 'Bouldering and Lead',
   locale: 'en-US',
   all_fields: 'Please fill in all fields',
+  categories_placeholder: 'Enter categories - each on a new line',
 }
 
 module.exports = translations

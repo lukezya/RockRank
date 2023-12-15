@@ -5,6 +5,8 @@ const translations = {
   groups: '运动员组别:',
   create: '创建',
   all_fields: '请填写所有字段',
+  select_discipline: '选择项目',
+  select_route_set: '选择线路集',
 }
 
 module.exports = translations

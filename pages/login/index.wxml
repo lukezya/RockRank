@@ -7,7 +7,7 @@
     <view class="center-button" bind:tap="onScoringClick">
       <text class="button-text">{{translations.scoring}}</text>
     </view>
-    <van-popup show="{{ showScorePopup }}" bind:click-overlay="onScorePopupIgnore" custom-style="width: 70%" bind:after-enter="onScorePopupShow">
+    <van-popup show="{{ showScorePopup }}" bind:click-overlay="onScorePopupIgnore" custom-style="width: 75%" bind:after-enter="onScorePopupShow">
       <view class="password-row">
         <input password="true" class="password-box" value="{{scorePassword}}" focus="{{focusScorePassword}}" placeholder="{{translations.password}}" bind:input="onScorePasswordInput" />
         <view class="confirm-button" bind:tap="onConfirmScorePassword">{{translations.confirm}}</view>
@@ -17,7 +17,7 @@
     <view class="center-button last-button" bind:tap="onEventControlClick">
       <text class="button-text">{{translations.event_control}}</text>
     </view>
-    <van-popup show="{{ showPasswordPrompt }}" bind:click-overlay="onPopupIgnore" custom-style="width: 70%" bind:after-enter="onPopupShow">
+    <van-popup show="{{ showPasswordPrompt }}" bind:click-overlay="onPopupIgnore" custom-style="width: 75%" bind:after-enter="onPopupShow">
       <view class="password-row">
         <input password="true" class="password-box" value="{{password}}" focus="{{focusPassword}}" placeholder="{{translations.password}}" bind:input="onPasswordInput" />
         <view class="confirm-button" bind:tap="onConfirmPassword">{{translations.confirm}}</view>

@@ -18,7 +18,7 @@
         <van-picker
         columns="{{ disciplines }}"
         show-toolbar
-        title="Select Discipline"
+        title="{{ translations.select_discipline }}"
         bind:cancel="onDisciplineCancel"
         bind:confirm="onDisciplineConfirm"/>
       </van-popup>

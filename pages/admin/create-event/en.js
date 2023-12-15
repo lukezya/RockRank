@@ -10,7 +10,9 @@ const translations = {
   bouldering: 'Bouldering',
   lead: 'Lead',
   speed: 'Speed',
-  bouldering_and_lead: 'Bouldering and Lead'
+  bouldering_and_lead: 'Bouldering and Lead',
+  all_fields: 'Please fill in all fields',
+  categories_placeholder: 'Enter categories - each on a new line',
 }
 
 module.exports = translations

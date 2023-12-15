@@ -13,7 +13,7 @@
         <van-picker
         columns="{{ disciplines }}"
         show-toolbar
-        title="Select Discipline"
+        title="{{translations.select_discipline}}"
         bind:cancel="onDisciplineCancel"
         bind:confirm="onDisciplineConfirm"/>
       </van-popup>
@@ -29,7 +29,7 @@
         columns="{{ filteredSets }}"
         value-key="set_name"
         show-toolbar
-        title="Select Route Set"
+        title="{{translations.select_route_set}}"
         bind:cancel="onRouteSetsCancel"
         bind:confirm="onRouteSetsConfirm"/>
       </van-popup>

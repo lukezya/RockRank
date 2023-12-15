@@ -16,6 +16,7 @@ const translations = {
   edit: 'Edit',
   done: 'Done',
   all_fields: 'Please fill in all fields',
+  select_discipline: 'Select Discipline',
 }
 
 module.exports = translations

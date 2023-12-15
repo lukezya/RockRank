@@ -91,7 +91,6 @@ Page({
     const {routeName, routeType, translations} = this.data
 
     if (!routeName || !routeType) {
-      console.log('hello')
       Toast.fail({
         message: translations.all_fields,
         selector: '#toasted'

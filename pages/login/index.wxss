@@ -64,6 +64,8 @@
   padding: 0% 4%;
   border: 1rpx solid #000;
   border-radius: 7rpx;
+  flex: 1;
+  text-align: center;
 }
 
 .language-container {

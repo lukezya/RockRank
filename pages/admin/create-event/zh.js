@@ -10,7 +10,9 @@ const translations = {
   bouldering: '攀石赛',
   lead: '难度赛',
   speed: '速度赛',
-  bouldering_and_lead: '全能赛'
+  bouldering_and_lead: '全能赛',
+  all_fields: '请填写所有字段',
+  categories_placeholder: '输入比赛组别，每个组别单独占一行',
 }
 
 module.exports = translations

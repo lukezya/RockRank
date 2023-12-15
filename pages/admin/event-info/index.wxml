@@ -64,7 +64,7 @@
 
     <view class="row-input">
       <text class="text-label">{{translations.categories}}</text>
-      <textarea class="category-input {{ editMode ? '' : 'disable-category'}}" placeholder="Enter categories, each on a new line" disabled="{{ !editMode }}" value="{{categories}}" bindinput="onCategoryInput" />
+      <textarea class="category-input {{ editMode ? '' : 'disable-category'}}" placeholder="{{translations.categories_placeholder}}" disabled="{{ !editMode }}" value="{{categories}}" bindinput="onCategoryInput" cursor-spacing="130" />
     </view>
   </view>
   <button wx:if="{{!editMode}}" class="bottom-button" bind:tap="onEditClick">{{translations.edit}}</button>

@@ -16,6 +16,7 @@ const translations = {
   edit: '编辑',
   done: '确定',
   all_fields: '请填写所有字段',
+  select_discipline: '选择项目',
 }
 
 module.exports = translations

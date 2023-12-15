@@ -13,7 +13,7 @@
         <van-picker
         columns="{{ categories }}"
         show-toolbar
-        title="Select Category"
+        title="{{translations.select_category}}"
         bind:cancel="onCategoriesCancel"
         bind:confirm="onCategoryConfirm"/>
       </van-popup>
@@ -28,7 +28,7 @@
         <van-picker
         columns="{{ disciplines }}"
         show-toolbar
-        title="Select Discipline"
+        title="{{translations.select_discipline}}"
         bind:cancel="onDisciplineCancel"
         bind:confirm="onDisciplineConfirm"/>
       </van-popup>

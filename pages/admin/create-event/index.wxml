@@ -51,7 +51,7 @@
 
     <view class="row-input">
       <text class="text-label">{{translations.categories}}</text>
-      <textarea class="category-input" placeholder="Enter categories - each on a new line" bindinput="onCategoryInput" cursor-spacing="130" />
+      <textarea class="category-input" placeholder="{{translations.categories_placeholder}}" bindinput="onCategoryInput" cursor-spacing="130" />
     </view>
   </view>
   

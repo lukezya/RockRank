@@ -18,6 +18,8 @@ const translations = {
   climber_number_title: 'Climber Number',
   climber_name_title: 'Climber Name',
   climbers_title: 'Climbers',
+  select_category: 'Select Category',
+  select_discipline: 'Select Discipline',
 }
 
 module.exports = translations
