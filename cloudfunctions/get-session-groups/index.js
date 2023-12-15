@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
   const getSessionsResult = await collection.doc('sessions').get()
   const { sessions } = getSessionsResult.data
 
-  const session = sessions.find(session => session.session_id = session_id)
+  const session = sessions.find(session => session.session_id === session_id)
   const { groups } = session
 
   return {

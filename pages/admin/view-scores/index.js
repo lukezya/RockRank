@@ -26,6 +26,14 @@ Page({
     const groupId = e.detail
     const { scores, groups } = this.data
 
+    if (groupId === 'All Groups') {
+      this.setData({
+        filteredScores: scores,
+        groupId
+      })
+      return
+    }
+
     const currentGroup = groups.find(group => group.group_id === groupId)
     const { category, discipline } = currentGroup
 
