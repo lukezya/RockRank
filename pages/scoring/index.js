@@ -222,12 +222,10 @@ Page({
       const { selectedClimber, selectedRoute } = data
       const { category, climberNumber, climberName, discipline, round } = selectedClimber
       const { routeName, routeType, numberZones } = selectedRoute
-
       const routeProgress = selectedClimber.progress?.[routeName]
 
       const { language } = getApp().globalData
       const translations = require(`./${language}.js`)
-
       if (routeProgress) {
         const { attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS } = routeProgress
         this.setData({

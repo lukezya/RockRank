@@ -122,22 +122,30 @@ Page({
   onLoad(options) {
     const { event_id, session_id, language } = getApp().globalData
 
-    wx.cloud.callFunction({
-      name: 'get-routes-climbers',
-      data:{
-        event_id,
-        session_id
-      }
-    }).then(getRoutesClimbersResult => {
+    Promise.all([
+      wx.cloud.callFunction({ name: 'get-routes-climbers', data:{ event_id, session_id } }),
+      wx.cloud.callFunction({ name: 'get-raw-session-scores', data:{ event_id, session_id } })
+    ]).then(([getRoutesClimbersResult, getSessionScoresResult]) => {
       console.log("Get Routes and Climbers:")
       console.log(getRoutesClimbersResult)
+
+      console.log("Get Session Scores:")
+      console.log(getSessionScoresResult)
   
       const { routes, climbers } = getRoutesClimbersResult.result
-      const translations = require(`./${language}.js`)
+      const sessionScores = getSessionScoresResult.result.scores
 
       climbers.forEach(climber => {
-        climber.progress = {}
+        const routeResults = sessionScores[climber.climberNumber].routes
+
+        if (routeResults) {
+          climber.progress = routeResults
+        } else {
+          climber.progress = {}
+        }
       })
+
+      const translations = require(`./${language}.js`)
       
       this.setData({
         routes,

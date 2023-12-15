@@ -54,7 +54,8 @@ exports.main = async (event, context) => {
               attemptsMade,
               zoneOnAttempt,
               topOnAttempt,
-              routeResult
+              routeResult,
+              climberDNS
             }
           }
         }
