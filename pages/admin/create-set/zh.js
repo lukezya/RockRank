@@ -4,6 +4,7 @@ const translations = {
   discipline: '项目:',
   routes: '线路:',
   add_route: '添加线路',
+  edit_route: '编辑线路',
   route_name: '线路名称:',
   route_type: '线路类型:',
   bouldering: '攀石赛',
@@ -14,6 +15,7 @@ const translations = {
   cancel: '取消',
   add: '添加',
   create: '创建',
+  done: '确定',
   all_fields: '请填写所有字段',
   select_discipline: '选择项目',
 }

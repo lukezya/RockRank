@@ -4,6 +4,7 @@ const translations = {
   discipline: '项目:',
   routes: '线路:',
   add_route: '添加线路',
+  edit_route: '编辑线路',
   route_name: '线路名称:',
   route_type: '线路类型:',
   bouldering: '攀石赛',

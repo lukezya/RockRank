@@ -39,13 +39,6 @@
           <text class="text-label">{{translations.quota}}</text>
           <input class="text-input" value="{{quota}}" bindinput="onQuotaInput"/>
         </view>
-        <view>
-          <text class="text-label">{{translations.order}}</text>
-          <van-radio-group class="radio-type" value="{{ order }}" bind:change="onOrderChange">
-            <van-radio name="FIRST_RANK_LAST">{{translations.first_last}}</van-radio>
-            <van-radio name="FIRST_RANK_FIRST">{{translations.first_first}}</van-radio>
-          </van-radio-group>
-        </view>
       </view>
       
       <view class="buttons-container">

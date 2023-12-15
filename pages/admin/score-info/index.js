@@ -8,6 +8,9 @@ Page({
   data: {
     showRouteScore: false,
     updateLoading: false,
+    attemptsMadeString: '',
+    zoneOnAttemptString: '',
+    topOnAttemptString: '',
   },
 
   onBackClick(e) {
@@ -21,7 +24,10 @@ Page({
     this.setData({
       showRouteScore: true,
       selectedRouteScore,
-      selectedRouteIndex: routeIndex
+      selectedRouteIndex: routeIndex,
+      attemptsMadeString: selectedRouteScore.attemptsMade.toString(),
+      zoneOnAttemptString: selectedRouteScore.zoneOnAttempt.toString(),
+      topOnAttemptString: selectedRouteScore.topOnAttempt.toString()
     })
   },
 

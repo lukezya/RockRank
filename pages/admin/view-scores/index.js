@@ -13,7 +13,6 @@ Page({
     discipline: '',
     round: '',
     quota: '',
-    order: '',
     creationLoading: false
   },
 
@@ -130,16 +129,10 @@ Page({
     })
   },
 
-  onOrderChange(e) {
-    this.setData({
-      order: e.detail
-    })
-  },
-
   async onCreateGroup() {
-    const { round, quota, order, category, discipline, filteredScores, translations } = this.data
+    const { round, quota, category, discipline, filteredScores, translations } = this.data
     
-    if (!round || !quota || !order) {
+    if (!round || !quota) {
       Toast.fail({
         message: translations.all_fields,
         selector: '#toasted'
@@ -150,15 +143,10 @@ Page({
     this.setData({ creationLoading: true })
     const { event_id } = getApp().globalData
     const quotaNumber = parseInt(quota)
-    const climbers = order === 'FIRST_RANK_LAST' 
-      ? filteredScores.slice(0, quotaNumber).map(score => ({
-          climberNumber: score.climberNumber,
-          climberName: score.climberName,
-        })).reverse()
-      : filteredScores.slice(0, quotaNumber).map(score => ({
-          climberNumber: score.climberNumber,
-          climberName: score.climberName,
-        }));
+    const climbers = filteredScores.slice(0, quotaNumber).map(score => ({
+      climberNumber: score.climberNumber,
+      climberName: score.climberName,
+    })).reverse()
 
     const createGroupResults = await wx.cloud.callFunction({
       name: 'create-climber-group',
@@ -176,8 +164,7 @@ Page({
       creationLoading: false,
       showCreateGroup: false,
       round: '',
-      quota: '',
-      order: ''
+      quota: ''
     })
   },
 

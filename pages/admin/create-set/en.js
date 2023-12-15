@@ -4,6 +4,7 @@ const translations = {
   discipline: 'Discipline:',
   routes: 'Routes:',
   add_route: 'Add Route',
+  edit_route: 'Edit Route',
   route_name: 'Route Name:',
   route_type: 'Route Type:',
   bouldering: 'Bouldering',
@@ -14,6 +15,7 @@ const translations = {
   cancel: 'Cancel',
   add: 'Add',
   create: 'Create',
+  done: 'Done',
   all_fields: 'Please fill in all fields',
   select_discipline: 'Select Discipline',
 }

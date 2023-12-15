@@ -28,17 +28,17 @@
         <view class="route-results-row">
           <view class="text-box">
             <text class="text-label">A</text>
-            <input class="text-input" value="{{selectedRouteScore.attemptsMade}}" bindinput="onAttemptsInput"/>
+            <input class="text-input" value="{{attemptsMadeString}}" bindinput="onAttemptsInput"/>
           </view>
 
           <view class="text-box">
             <text class="text-label">Z</text>
-            <input class="text-input" value="{{selectedRouteScore.zoneOnAttempt}}" bindinput="onZoneAttemptInput"/>
+            <input class="text-input" value="{{zoneOnAttemptString}}" bindinput="onZoneAttemptInput"/>
           </view>
 
           <view class="text-box">
             <text class="text-label">T</text>
-            <input class="text-input" value="{{selectedRouteScore.topOnAttempt}}" bindinput="onTopAttemptInput"/>
+            <input class="text-input" value="{{topOnAttemptString}}" bindinput="onTopAttemptInput"/>
           </view>
         </view>
       </view>

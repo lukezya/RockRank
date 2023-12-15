@@ -28,6 +28,12 @@
   align-items: center;
 }
 
+.multiple-row-input {
+  display: flex;
+  direction: row;
+  margin-bottom: 5%;
+}
+
 .text-label {
   flex: 0.75;
   font-family: Inter;

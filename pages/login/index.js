@@ -1,3 +1,5 @@
+import Toast from '@vant/weapp/toast/toast';
+
 Page({
 
   /**
@@ -49,13 +51,18 @@ Page({
   },
 
   onConfirmScorePassword() {
-    const { scorePassword } = this.data
+    const { scorePassword, translations } = this.data
     if (scorePassword === '2117') {
       wx.navigateTo({
         url: '/pages/events/index'
       })
     } else {
       this.onScorePopupIgnore()
+      Toast.fail({
+        message: translations.wrong_password,
+        selector: '#toasted'
+      });
+      return
     }
   },
 
@@ -79,13 +86,17 @@ Page({
   },
 
   onConfirmPassword() {
-    const { password } = this.data
+    const { password, translations } = this.data
     if (password === '1337') {
       wx.navigateTo({
         url: '/pages/admin/add-event/index',
       })
     } else {
       this.onPopupIgnore()
+      Toast.fail({
+        message: translations.wrong_password,
+        selector: '#toasted'
+      });
     }
   },
 

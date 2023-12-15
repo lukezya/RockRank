@@ -31,5 +31,6 @@
       </view>
     </view>
   </view>
+  <van-toast id="toasted" />
 </view>
 

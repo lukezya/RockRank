@@ -9,11 +9,17 @@ Page({
     discipline: '',
     showDisciplinePopup: false,
     routes: [],
+    showEditRoute: false,
     showAddRoute: false,
     routeType: '',
+    selectedRouteType: '',
     routeName: '',
+    selectedRouteName: '',
     numberZones: '',
     numberHolds: '',
+    selectedNumberZones: '',
+    selectedNumberHolds: '',
+    selectedRouteIndex: '',
     creationLoading: false,
   },
 
@@ -45,6 +51,96 @@ Page({
       discipline: selectedDiscipline,
       showDisciplinePopup: false      
     })
+  },
+
+  onEditRouteShow(e) {
+    const { routes } = this.data
+    const { routeIndex } = e.currentTarget.dataset
+    const selectedRoute = routes[routeIndex]
+
+    if (selectedRoute.routeType === 'Bouldering') {
+      this.setData({
+        showEditRoute: true,
+        selectedRouteIndex: routeIndex,
+        selectedRouteName: selectedRoute.routeName,
+        selectedRouteType: selectedRoute.routeType,
+        selectedNumberZones: selectedRoute.numberZones
+      })
+    } else if (selectedRoute.routeType === 'Lead') {
+      this.setData({
+        showEditRoute: true,
+        selectedRouteIndex: routeIndex,
+        selectedRouteName: selectedRoute.routeName,
+        selectedRouteType: selectedRoute.routeType,
+        selectedNumberHolds: selectedRoute.numberHolds
+      })
+    } else {
+      this.setData({
+        showEditRoute: true,
+        selectedRouteIndex: routeIndex,
+        selectedRouteName: selectedRoute.routeName,
+        selectedRouteType: selectedRoute.routeType
+      })
+    }
+  },
+
+  onEditRouteClose(e) {
+    this.setData({ showEditRoute: false })
+  },
+
+  onSelectedRouteNameInput(e) {
+    this.setData({
+      selectedRouteName: e.detail.value
+    })
+  },
+
+  onSelectedNumberZonesInput(e) {
+    this.setData({
+      selectedNumberZones: e.detail.value
+    })
+  },
+
+  onSelectedNumberHoldsInput(e) {
+    this.setData({
+      selectedNumberHolds: e.detail.value
+    })
+  },
+
+  onSelectedRouteTypeChange(e) {
+    this.setData({ selectedRouteType: e.detail })
+  },
+
+  onEditRouteUpdate() {
+    const { routes, selectedRouteIndex, selectedRouteName, selectedRouteType, selectedNumberZones, selectedNumberHolds, translations } = this.data
+
+    if (!selectedRouteName || !selectedRouteType) {
+      Toast.fail({
+        message: translations.all_fields,
+        selector: '#toasted'
+      });
+      return
+    }
+
+    if (selectedRouteType === 'Bouldering') {
+      routes[selectedRouteIndex] = {
+        routeName: selectedRouteName,
+        routeType: selectedRouteType,
+        numberZones: selectedNumberZones
+      }
+    } else if (selectedRouteType === 'Lead') {
+      routes[selectedRouteIndex] = {
+        routeName: selectedRouteName,
+        routeType: selectedRouteType,
+        numberHolds: selectedNumberHolds
+      }
+    } else {
+      routes[selectedRouteIndex] = {
+        routeName: selectedRouteName,
+        routeType: selectedRouteType
+      }
+    }
+
+    this.setData({ routes, showEditRoute: false })
   },
 
   onDeleteRoute(e) {
