@@ -51,6 +51,7 @@ Page({
 
   onDNSClick(e) {
     this.data.undoStack.push(Actions.DNS)
+    this.data.dnsSound.play()
     this.setData({
       climberDNS: true,
       undoStack: this.data.undoStack,
@@ -88,9 +89,8 @@ Page({
 
   onAttemptClick(e) {
     this.data.undoStack.push(Actions.ATTEMPT)
-    wx.vibrateShort({
-      type: 'light'
-    })
+
+    Promise.all([this.data.attemptSound.play(), wx.vibrateShort({ type: 'light' })])
     this.setData({
       attemptsMade: this.data.attemptsMade + 1,
       undoStack: this.data.undoStack,
@@ -99,10 +99,9 @@ Page({
   },
 
   onZoneClick(e) {
-    const { attemptsMade, undoStack } = this.data
-    wx.vibrateShort({
-      type: 'medium'
-    })
+    const { attemptsMade, undoStack, zoneSound } = this.data
+
+    Promise.all([zoneSound.play(), wx.vibrateShort({ type: 'medium' })])
 
     if (attemptsMade === 0) {
       undoStack.push(Actions.ZONE_ON_ZERO)
@@ -125,10 +124,9 @@ Page({
   },
 
   onTopClick(e) {
-    const { attemptsMade, zoneOnAttempt, undoStack } = this.data
-    wx.vibrateShort({
-      type: 'heavy'
-    })
+    const { attemptsMade, zoneOnAttempt, undoStack, topSound } = this.data
+    // Promise.all([topSound.play(), wx.vibrateShort({ type: 'heavy' })])
+    Promise.all([topSound.play(), wx.vibrateLong()])
     if (attemptsMade === 0) {
       undoStack.push(Actions.TOP_ON_ZERO)
       this.setData({
@@ -232,6 +230,18 @@ Page({
       const { routeName, routeType, numberZones } = selectedRoute
       const routeProgress = selectedClimber.progress?.[routeName]
 
+      const attemptSound = wx.createInnerAudioContext()
+      attemptSound.src = '/sounds/Attempt.mp3'
+
+      const dnsSound = wx.createInnerAudioContext()
+      dnsSound.src = '/sounds/DNS.mp3'
+
+      const topSound = wx.createInnerAudioContext()
+      topSound.src = '/sounds/Top.mp3'
+
+      const zoneSound = wx.createInnerAudioContext()
+      zoneSound.src = '/sounds/Zone.mp3'
+
       const { language } = getApp().globalData
       const translations = require(`./${language}.js`)
       if (routeProgress) {
@@ -254,6 +264,10 @@ Page({
           climberDNS,
           undoStack: currentUndoStack,
           initialStack: undoStack,
+          attemptSound,
+          dnsSound,
+          topSound,
+          zoneSound,
           translations
         })
       } else {
@@ -274,6 +288,10 @@ Page({
           climberDNS: false,
           undoStack: [],
           initialStack: [],
+          attemptSound,
+          dnsSound,
+          topSound,
+          zoneSound,
           translations
         })
       }
