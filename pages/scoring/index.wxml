@@ -11,7 +11,7 @@
       <text class="bib-info">{{climberNumber}}</text>
       <text class="name-info">{{climberName}}</text>
     </view>
-    <view class="score-button {{ ((attemptsMade==0 && !climberDNS) || alreadyTopped || undoStack.length === 0) ? 'score-button-disabled' : ''}}" bind:tap="onConfirmScoreClick">{{translations.confirm_score}}</view>
+    <view class="score-button {{ routeUnchanged ? 'score-button-disabled' : ''}}" bind:tap="onConfirmScoreClick">{{translations.confirm_score}}</view>
   </view>
 
   <view class="result-info">

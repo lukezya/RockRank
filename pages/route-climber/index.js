@@ -1,9 +1,5 @@
-// pages/route-climber/index.js
 Page({
 
-  /**
-   * Page initial data
-   */
   data: {
     routeIndex: 0,
     searchQuery: "",
@@ -99,7 +95,7 @@ Page({
     handleDelay();
   },
 
-  onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS) {
+  onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack) {
     const { climbers } = this.data
     const climberIndex = climbers.findIndex(climber => climber.climberNumber === climberNumber && climber.climberName === climberName)
 
@@ -107,7 +103,8 @@ Page({
       attemptsMade,
       zoneOnAttempt,
       topOnAttempt,
-      climberDNS
+      climberDNS,
+      undoStack
     }
 
     this.setData({

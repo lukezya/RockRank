@@ -85,7 +85,8 @@ Page({
       zoneOnAttempt,
       topOnAttempt,
       routeResult,
-      climberDNS: false
+      climberDNS: false,
+      undoStack: []
     }
 
     const updateRouteScoreResult = await wx.cloud.callFunction({

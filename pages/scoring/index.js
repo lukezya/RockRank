@@ -1,4 +1,3 @@
-// pages/scoring/index.js
 const Actions = {
   DNS: 'DNS',
   ATTEMPT: 'ATTEMPT',
@@ -11,11 +10,8 @@ const Actions = {
 
 Page({
 
-  /**
-   * Page initial data
-   */
   data: {
-    undoStack: []
+    routeUnchanged: true
   },
 
   onBackClick(e) {
@@ -23,7 +19,7 @@ Page({
   },
 
   onConfirmScoreClick(e) {
-    const { climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS } = this.data
+    const { climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack } = this.data
     const { event_id, session_id } = getApp().globalData
 
     wx.cloud.callFunction({
@@ -36,7 +32,8 @@ Page({
         attemptsMade,
         zoneOnAttempt,
         topOnAttempt,
-        climberDNS
+        climberDNS,
+        undoStack
       }
     }).then(res => {
       console.log(res.result)
@@ -47,7 +44,7 @@ Page({
       success: function () {
         const pages = getCurrentPages();
         const prevPage = pages[pages.length - 1];
-        prevPage.onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS)
+        prevPage.onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack)
       },
     });
   },
@@ -56,7 +53,8 @@ Page({
     this.data.undoStack.push(Actions.DNS)
     this.setData({
       climberDNS: true,
-      undoStack: this.data.undoStack
+      undoStack: this.data.undoStack,
+      routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
     })
   },
 
@@ -95,7 +93,8 @@ Page({
     })
     this.setData({
       attemptsMade: this.data.attemptsMade + 1,
-      undoStack: this.data.undoStack
+      undoStack: this.data.undoStack,
+      routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
     })
   },
 
@@ -111,14 +110,16 @@ Page({
         attemptsMade: 1,
         zoneOnAttempt: 1,
         zoneSuccess: true,
-        undoStack: undoStack
+        undoStack: undoStack,
+        routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
       })
     } else {
       undoStack.push(Actions.ZONE)
       this.setData({
         zoneOnAttempt: attemptsMade,
         zoneSuccess: true,
-        undoStack: undoStack
+        undoStack: undoStack,
+        routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
       })
     }
   },
@@ -135,7 +136,8 @@ Page({
         zoneOnAttempt: 1,
         topOnAttempt: 1,
         topSuccess: true,
-        undoStack: undoStack
+        undoStack: undoStack,
+        routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
       })
     } else if (zoneOnAttempt === 0) {
       undoStack.push(Actions.TOP_AND_ZONE)
@@ -143,14 +145,16 @@ Page({
         zoneOnAttempt: attemptsMade,
         topOnAttempt: attemptsMade,
         topSuccess: true,
-        undoStack: undoStack
+        undoStack: undoStack,
+        routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
       })
     } else {
       undoStack.push(Actions.TOP)
       this.setData({
         topOnAttempt: attemptsMade,
         topSuccess: true,
-        undoStack: undoStack
+        undoStack: undoStack,
+        routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
       })
     }
   },
@@ -158,14 +162,16 @@ Page({
   undoDNSClick() {
     this.setData({
       climberDNS: false,
-      undoStack: this.data.undoStack
+      undoStack: this.data.undoStack,
+      routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
     })
   },
 
   undoAttemptClick() {
     this.setData({
       attemptsMade: this.data.attemptsMade - 1,
-      undoStack: this.data.undoStack
+      undoStack: this.data.undoStack,
+      routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
     })
   },
 
@@ -173,7 +179,8 @@ Page({
     this.setData({
       zoneOnAttempt: 0,
       zoneSuccess: false,
-      undoStack: this.data.undoStack
+      undoStack: this.data.undoStack,
+      routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
     })
   },
 
@@ -182,7 +189,8 @@ Page({
       attemptsMade: 0,
       zoneOnAttempt: 0,
       zoneSuccess: false,
-      undoStack: this.data.undoStack
+      undoStack: this.data.undoStack,
+      routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
     })
   },
 
@@ -190,7 +198,8 @@ Page({
     this.setData({
       topOnAttempt: 0,
       topSuccess: false,
-      undoStack: this.data.undoStack
+      undoStack: this.data.undoStack,
+      routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
     })
   },
 
@@ -199,7 +208,8 @@ Page({
       topOnAttempt: 0,
       zoneOnAttempt: 0,
       topSuccess: false,
-      undoStack: this.data.undoStack
+      undoStack: this.data.undoStack,
+      routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
     })
   },
 
@@ -209,13 +219,11 @@ Page({
       zoneOnAttempt: 0,
       topOnAttempt: 0,
       topSuccess: false,
-      undoStack: this.data.undoStack
+      undoStack: this.data.undoStack,
+      routeUnchanged: this.data.initialStack.toString() === this.data.undoStack.toString()
     })
   },
   
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad(options) {
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('loadClimber', data => {
@@ -227,7 +235,8 @@ Page({
       const { language } = getApp().globalData
       const translations = require(`./${language}.js`)
       if (routeProgress) {
-        const { attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS } = routeProgress
+        const { attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack } = routeProgress
+        const currentUndoStack = undoStack.slice()
         this.setData({
           category,
           climberNumber,
@@ -242,8 +251,9 @@ Page({
           topOnAttempt,
           zoneSuccess: (zoneOnAttempt > 0),
           topSuccess: (topOnAttempt > 0),
-          alreadyTopped: (topOnAttempt > 0),
           climberDNS,
+          undoStack: currentUndoStack,
+          initialStack: undoStack,
           translations
         })
       } else {
@@ -261,8 +271,9 @@ Page({
           topOnAttempt: 0,
           zoneSuccess: false,
           topSuccess: false,
-          alreadyTopped: false,
           climberDNS: false,
+          undoStack: [],
+          initialStack: [],
           translations
         })
       }

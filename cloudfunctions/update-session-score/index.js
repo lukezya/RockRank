@@ -6,7 +6,7 @@ const db = cloud.database()
 const _ = db.command
 
 exports.main = async (event, context) => {
-  const { event_id, session_id, climberNumber, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS } = event
+  const { event_id, session_id, climberNumber, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack } = event
 
   const collection = db.collection(event_id)
   const docName = session_id + '_scores'
@@ -16,38 +16,22 @@ exports.main = async (event, context) => {
   const currentRouteResults = climbersResults[climberNumber].routes?.[routeName]
 
   if (currentRouteResults) {
-    //the difference
-    const initialAttemptsMade = currentRouteResults.attemptsMade
-    const initialZoneOnAttempt = currentRouteResults.zoneOnAttempt
-    const initialTopOnAttempt = currentRouteResults.topOnAttempt
-    const initialClimberDNS = currentRouteResults.climberDNS
-    console.log("currentRouteResults")
-    console.log(currentRouteResults)
-
-    const attemptsMadeDifference = attemptsMade - initialAttemptsMade
-    const zoneOnAttemptDfiference = zoneOnAttempt - initialZoneOnAttempt
-    const topOnAttemptDifference = topOnAttempt - initialTopOnAttempt
-
-    //check if its valid
-    if (attemptsMadeDifference <= 0 || (zoneOnAttemptDfiference !== 0 && zoneOnAttemptDfiference !== zoneOnAttempt) || (topOnAttemptDifference !== 0 && topOnAttemptDifference !== topOnAttempt) || (initialClimberDNS)) {
-      return {
-        result: 'unmatched_score'
-      }
-    }
-
+    const incTotalAttempts = attemptsMade - currentRouteResults.attemptsMade
+    const incTotalAttemptsToZone = zoneOnAttempt - currentRouteResults.zoneOnAttempt
+    const incTotalAttemptsToTop = topOnAttempt - currentRouteResults.topOnAttempt
+    const incTotalZones = (zoneOnAttempt > 0 ? 1 : 0) - (currentRouteResults.zoneOnAttempt > 0 ? 1 : 0)
+    const incTotalTops = (topOnAttempt > 0 ? 1 : 0) - (currentRouteResults.topOnAttempt > 0 ? 1 : 0)
     const routeResult = climberDNS
       ? 'DNS'
       : 'A' + attemptsMade + ' Z' + zoneOnAttempt + ' T' + topOnAttempt
-    const incTotalZones = (zoneOnAttemptDfiference > 0) ? 1 : 0
-    const incTotalTops = (topOnAttemptDifference > 0) ? 1 : 0
 
     const updateScoreResult = await collection.doc(docName).update({
       data: {
         [climberNumber]: {
-          total_attempts: _.inc(attemptsMadeDifference),
-          total_attempts_to_zone: _.inc(zoneOnAttemptDfiference),
+          total_attempts: _.inc(incTotalAttempts),
+          total_attempts_to_zone: _.inc(incTotalAttemptsToZone),
           total_zones: _.inc(incTotalZones),
-          total_attempts_to_top: _.inc(topOnAttemptDifference),
+          total_attempts_to_top: _.inc(incTotalAttemptsToTop),
           total_tops: _.inc(incTotalTops),
           routes: {
             [routeName]: {
@@ -55,7 +39,8 @@ exports.main = async (event, context) => {
               zoneOnAttempt,
               topOnAttempt,
               routeResult,
-              climberDNS
+              climberDNS,
+              undoStack
             }
           }
         }
@@ -88,7 +73,8 @@ exports.main = async (event, context) => {
               zoneOnAttempt,
               topOnAttempt,
               routeResult,
-              climberDNS
+              climberDNS,
+              undoStack
             }
           }
         }
