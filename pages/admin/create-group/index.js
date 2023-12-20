@@ -1,5 +1,5 @@
 import Toast from '@vant/weapp/toast/toast'
-import XLSX from '../../../utils/xlsx.mini.js'
+import { decode } from 'base64-arraybuffer'
 
 Page({
 
@@ -17,6 +17,8 @@ Page({
     climberNumber: '',
     climberName: '',
     creationLoading: false,
+    downloadListLoading: false,
+    downloadScorecardLoading: false,
   },
 
   onBackClick(e) {
@@ -121,8 +123,9 @@ Page({
     })
   },
 
-  onDownloadClimbers() {
+  async onDownloadClimbers() {
     const { category, discipline, round, climbers, translations } = this.data
+    const { event_id } = getApp().globalData
 
     if (!category || !discipline || !round || climbers.length === 0) {
       Toast.fail({
@@ -132,29 +135,72 @@ Page({
       return
     }
 
-    // Create a worksheet
-    const ws = XLSX.utils.aoa_to_sheet([
-      [category + ' ' + discipline],
-      [round],
-      [],
-      [translations.order, translations.climber_number_title, translations.climber_name_title],
-      ...climbers.map((climber, index) => [index + 1, climber.climberNumber, climber.climberName]),
-    ]);
+    this.setData({ downloadListLoading: true })
+    const excelClimberOrderResult = await wx.cloud.callFunction({
+      name: 'excel-climber-order',
+      data: {
+        category,
+        discipline,
+        round,
+        climbers,
+        event_id
+      }
+    })
 
-    // Create a workbook
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-    // Convert the workbook to a data URI
-    const dataURI = XLSX.write(wb, { bookType: 'xlsx', bookSST: false, type: 'base64' });
+    const fileContent = excelClimberOrderResult.result.fileContent
+    const fileContentBuffer = decode(fileContent)
 
     // Save the data URI to a file
-    const fileName = `${wx.env.USER_DATA_PATH}/${category + ' ' + discipline + ' - ' + round + ' ' + translations.climbers_title + '.xlsx'}`
+    const fileName = `${wx.env.USER_DATA_PATH}/${category + ' ' + discipline + ' - ' + round + ' 出场表.xlsx'}`
     wx.getFileSystemManager().writeFile({
       filePath: fileName,
-      data: dataURI,
-      encoding: 'base64',
-      success: function (res) {
+      data: fileContentBuffer,
+      encoding: 'binary',
+      success: res => {
+        this.setData({ downloadListLoading: false })
+        wx.openDocument({
+          filePath: fileName,
+          showMenu : true
+        })
+      }
+    });
+  },
+
+  async onDownloadScorecard() {
+    const { category, discipline, round, climbers, translations } = this.data
+    const { event_id } = getApp().globalData
+
+    if (!category || !discipline || !round || climbers.length === 0) {
+      Toast.fail({
+        message: translations.all_fields,
+        selector: '#toasted'
+      });
+      return
+    }
+
+    this.setData({ downloadScorecardLoading: true })
+    const excelRouteScorecardResult = await wx.cloud.callFunction({
+      name: 'excel-route-scorecard',
+      data: {
+        category,
+        discipline,
+        round,
+        climbers,
+        event_id
+      }
+    })
+
+    const fileContent = excelRouteScorecardResult.result.fileContent
+    const fileContentBuffer = decode(fileContent)
+
+    // Save the data URI to a file
+    const fileName = `${wx.env.USER_DATA_PATH}/${category + ' ' + discipline + ' - ' + round + ' 线路成绩记录.xlsx'}`
+    wx.getFileSystemManager().writeFile({
+      filePath: fileName,
+      data: fileContentBuffer,
+      encoding: 'binary',
+      success: res => {
+        this.setData({ downloadScorecardLoading: false })
         wx.openDocument({
           filePath: fileName,
           showMenu : true

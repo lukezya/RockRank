@@ -14,7 +14,8 @@ const translations = {
   climber_number: '运动员参赛号码',
   climber_name: '运动员名字',
   total_attempts: '总尝试次数',
-  route_results: '路线成绩'
+  route_results: '路线成绩',
+  session: '比赛单元',
 }
 
 module.exports = translations

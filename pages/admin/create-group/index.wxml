@@ -79,7 +79,12 @@
 
     <view class="climbers-button-board">
       <view class="climber-button" bind:tap="onDownloadClimbers">
-        <text class="climber-button-text">{{translations.download}}</text>
+        <view hidden="{{!downloadListLoading}}"><van-loading type="spinner" size="14px" /></view>
+        <text class="climber-button-text">{{translations.download_list}}</text>
+      </view>
+      <view class="climber-button" bind:tap="onDownloadScorecard">
+        <view hidden="{{!downloadScorecardLoading}}"><van-loading type="spinner" size="14px" /></view>
+        <text class="climber-button-text">{{translations.download_scorecard}}</text>
       </view>
       <view class="climber-button" bind:tap="onRandomizeClimbers">
         <text class="climber-button-text">{{translations.randomize}}</text>

@@ -18,7 +18,10 @@
   </view>
 
   <view class="button-container">
-    <view class="button-box download-button" bind:tap="onDownloadScores">{{translations.download}}</view>
+    <view class="button-box download-button" bind:tap="onDownloadScores">
+      <view hidden="{{!downloadScoresLoading}}"><van-loading type="spinner" size="14px" /></view>
+      {{translations.download}}
+    </view>
     <view class="button-box create-button {{groupId === 'All Groups' ? 'disabled-button' : ''}}" bind:tap="onCreateGroupShow">{{translations.create_group}}</view>
     <van-popup show="{{ showCreateGroup }}" bind:close="onCreateGroupClose" custom-style="width: 75%">
       <view class="create-group-container">

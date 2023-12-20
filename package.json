@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.11.1",
+    "base64-arraybuffer": "^1.0.2",
     "tdesign-miniprogram": "^1.2.4"
   }
 }

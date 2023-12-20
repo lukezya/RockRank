@@ -10,6 +10,8 @@ const translations = {
   cancel: '取消',
   add: '添加',
   download: '下载',
+  download_list: '下载出场表',
+  download_scorecard: '下载线路记录',
   randomize: '随机排序',
   create: '创建',
   all_fields: '请填写所有字段',

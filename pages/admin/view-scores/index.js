@@ -1,5 +1,5 @@
 import Toast from '@vant/weapp/toast/toast';
-import XLSX from '../../../utils/xlsx.mini.js'
+import { decode } from 'base64-arraybuffer'
 
 Page({
 
@@ -13,7 +13,8 @@ Page({
     discipline: '',
     round: '',
     quota: '',
-    creationLoading: false
+    creationLoading: false,
+    downloadScoresLoading: false,
   },
 
   onBackClick(e) {
@@ -66,46 +67,36 @@ Page({
     })
   },
 
-  onDownloadScores() {
-    const { groupId, discipline, filteredScores, session_id, formattedGroups, translations } = this.data
-    const currentGroup = formattedGroups.find(group => group.value === groupId)
+  async onDownloadScores() {
+    const { groupId, discipline, filteredScores, groups, translations } = this.data
+    const { event_id } = getApp().globalData
+    const currentGroup = groups.find(group => group.group_id === groupId)
+    const category = currentGroup ? currentGroup.category : translations.all_groups
+    const round = currentGroup ? currentGroup.round : translations.session
     
-    // Create a worksheet
-    const ws = XLSX.utils.aoa_to_sheet([
-      [currentGroup.text],
-      [discipline], 
-      [],
-      [translations.ranking, translations.climber_number, translations.climber_name, 'T', 'Z', 'AT', 'AZ', translations.total_attempts, translations.route_results],
-      ...filteredScores.map((score, index) => [
-        index + 1,
-        score.climberNumber,
-        score.climberName,
-        score.total_tops,
-        score.total_zones,
-        score.total_attempts_to_top,
-        score.total_attempts_to_zone,
-        score.total_attempts,
-        (score.routes ? Object.keys(score.routes)
-          .sort((a, b) => score.routes[a].routeIndex - score.routes[b].routeIndex)
-          .map(routeName => `${routeName}: ${score.routes[routeName].routeResult}`)
-          .join(' | ') : '')
-      ]),
-    ]);
+    this.setData({ downloadScoresLoading: true })
+    const excelClimberOrderResult = await wx.cloud.callFunction({
+      name: 'excel-group-results',
+      data: {
+        category,
+        discipline,
+        round,
+        filteredScores,
+        event_id
+      }
+    })
 
-    // Create a workbook
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-    // Convert the workbook to a data URI
-    const dataURI = XLSX.write(wb, { bookType: 'xlsx', bookSST: false, type: 'base64' });
+    const fileContent = excelClimberOrderResult.result.fileContent
+    const fileContentBuffer = decode(fileContent)
 
     // Save the data URI to a file
-    const fileName = `${wx.env.USER_DATA_PATH}/${currentGroup.text + ' ' + discipline + ' - ' + session_id + ' ' + translations.scores + '.xlsx'}`
+    const fileName = `${wx.env.USER_DATA_PATH}/${category + ' ' + discipline + ' - ' + round + ' 成绩单.xlsx'}`
     wx.getFileSystemManager().writeFile({
       filePath: fileName,
-      data: dataURI,
-      encoding: 'base64',
-      success: function (res) {
+      data: fileContentBuffer,
+      encoding: 'binary',
+      success: res => {
+        this.setData({ downloadScoresLoading: false })
         wx.openDocument({
           filePath: fileName,
           showMenu : true

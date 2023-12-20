@@ -187,15 +187,11 @@
 .climber-button {
   border-radius: 6px;
   border: 1rpx solid #000;
-  width: 33%;
+  width: 30%;
   padding: 2% 0%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.climber-single {
-  margin-left: auto;
 }
 
 .climber-button-text {
@@ -204,4 +200,5 @@
   font-size: 30rpx;
   font-style: normal;
   font-weight: 400;
+  text-align: center;
 }

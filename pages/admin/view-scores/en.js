@@ -14,7 +14,8 @@ const translations = {
   climber_number: 'Climber Number',
   climber_name: 'Climber Name',
   total_attempts: 'Total Attempts',
-  route_results: 'Route Results'
+  route_results: 'Route Results',
+  session: 'Session',
 }
 
 module.exports = translations
