@@ -71,7 +71,8 @@ Page({
       success: res => {
         res.eventChannel.emit('loadClimber', { 
           selectedClimber,
-          selectedRoute
+          selectedRoute,
+          routeIndex: routeIndex + 1
         })
       }
     })
@@ -95,7 +96,7 @@ Page({
     handleDelay();
   },
 
-  onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack) {
+  onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack, routeIndex) {
     const { climbers } = this.data
     const climberIndex = climbers.findIndex(climber => climber.climberNumber === climberNumber && climber.climberName === climberName)
 
@@ -104,7 +105,8 @@ Page({
       zoneOnAttempt,
       topOnAttempt,
       climberDNS,
-      undoStack
+      undoStack,
+      routeIndex
     }
 
     this.setData({

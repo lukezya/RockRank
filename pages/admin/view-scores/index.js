@@ -86,8 +86,9 @@ Page({
         score.total_attempts_to_zone,
         score.total_attempts,
         (score.routes ? Object.keys(score.routes)
+          .sort((a, b) => score.routes[a].routeIndex - score.routes[b].routeIndex)
           .map(routeName => `${routeName}: ${score.routes[routeName].routeResult}`)
-          .join(', ') : '')
+          .join(' | ') : '')
       ]),
     ]);
 

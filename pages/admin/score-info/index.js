@@ -126,7 +126,9 @@ Page({
       const { selectedScore, session_id } = data
       
       const routes = selectedScore.routes 
-      ? Object.keys(selectedScore.routes).map(routeName => ({
+      ? Object.keys(selectedScore.routes)
+        .sort((a, b) => selectedScore.routes[a].routeIndex - selectedScore.routes[b].routeIndex)
+        .map(routeName => ({
           routeName,
           ...selectedScore.routes[routeName],
         })) 

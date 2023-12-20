@@ -6,7 +6,7 @@ const db = cloud.database()
 const _ = db.command
 
 exports.main = async (event, context) => {
-  const { event_id, session_id, climberNumber, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack } = event
+  const { event_id, session_id, climberNumber, routeName, routeIndex, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack } = event
 
   const collection = db.collection(event_id)
   const docName = session_id + '_scores'
@@ -35,6 +35,7 @@ exports.main = async (event, context) => {
           total_tops: _.inc(incTotalTops),
           routes: {
             [routeName]: {
+              routeIndex,
               attemptsMade,
               zoneOnAttempt,
               topOnAttempt,
@@ -69,6 +70,7 @@ exports.main = async (event, context) => {
           total_tops: _.inc(incTotalTops),
           routes: {
             [routeName]: {
+              routeIndex,
               attemptsMade,
               zoneOnAttempt,
               topOnAttempt,

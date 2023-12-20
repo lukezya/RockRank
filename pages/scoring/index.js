@@ -19,7 +19,7 @@ Page({
   },
 
   onConfirmScoreClick(e) {
-    const { climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack } = this.data
+    const { climberNumber, climberName, routeName, routeIndex, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack } = this.data
     const { event_id, session_id } = getApp().globalData
 
     wx.cloud.callFunction({
@@ -29,6 +29,7 @@ Page({
         session_id,
         climberNumber,
         routeName,
+        routeIndex,
         attemptsMade,
         zoneOnAttempt,
         topOnAttempt,
@@ -44,7 +45,7 @@ Page({
       success: function () {
         const pages = getCurrentPages();
         const prevPage = pages[pages.length - 1];
-        prevPage.onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack)
+        prevPage.onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack, routeIndex)
       },
     });
   },
@@ -225,7 +226,7 @@ Page({
   onLoad(options) {
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('loadClimber', data => {
-      const { selectedClimber, selectedRoute } = data
+      const { selectedClimber, selectedRoute, routeIndex } = data
       const { category, climberNumber, climberName, discipline, round } = selectedClimber
       const { routeName, routeType, numberZones } = selectedRoute
       const routeProgress = selectedClimber.progress?.[routeName]
@@ -256,6 +257,7 @@ Page({
           routeName,
           routeType,
           numberZones,
+          routeIndex,
           attemptsMade,
           zoneOnAttempt,
           topOnAttempt,
@@ -280,6 +282,7 @@ Page({
           routeName,
           routeType,
           numberZones,
+          routeIndex,
           attemptsMade: 0,
           zoneOnAttempt: 0,
           topOnAttempt: 0,

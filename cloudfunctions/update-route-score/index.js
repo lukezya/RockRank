@@ -30,7 +30,7 @@ exports.main = async (event, context) => {
         total_attempts_to_top: _.inc(incTotalAttemptsToTop),
         total_tops: _.inc(incTotalTops),
         routes: {
-          [routeName]: updateRouteData
+          [routeName]: { ...updateRouteData, routeIndex: currentRouteResults.routeIndex }
         }
       }
     }
