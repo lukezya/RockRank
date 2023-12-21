@@ -36,6 +36,10 @@
       <view class="climber-row" wx:for="{{searchedClimbers}}" wx:for-item="climber" wx:for-index="index" wx:key="index" bind:tap="onClimberSelect" data-climber-index="{{index}}" id="{{'climberRow' + index}}">
         <text class="climber-bib">{{climber.climberNumber}}</text>
         <text class="climber-name">{{climber.climberName}}</text>
+        <view class="category-round">
+          <text class="category-text">{{climber.category}}</text>
+          <text class="round-text">{{climber.round}}</text>
+        </view>
         <van-icon class="right-icon" name="arrow" size="36rpx"/>
       </view>
     </scroll-view>
