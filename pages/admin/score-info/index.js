@@ -70,7 +70,7 @@ Page({
     const attemptsMade = parseInt(attemptsMadeString)
     const zoneOnAttempt = parseInt(zoneOnAttemptString)
     const topOnAttempt = parseInt(topOnAttemptString)
-    const routeResult = 'A' + attemptsMade + ' Z' + zoneOnAttempt + ' T' + topOnAttempt
+    const routeResult = 'A' + attemptsMade + ' AZ' + zoneOnAttempt + ' AT' + topOnAttempt
 
     // update routes array
     routes[selectedRouteIndex].attemptsMade = attemptsMade

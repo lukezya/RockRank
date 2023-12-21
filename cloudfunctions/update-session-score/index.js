@@ -23,7 +23,7 @@ exports.main = async (event, context) => {
     const incTotalTops = (topOnAttempt > 0 ? 1 : 0) - (currentRouteResults.topOnAttempt > 0 ? 1 : 0)
     const routeResult = climberDNS
       ? 'DNS'
-      : 'A' + attemptsMade + ' Z' + zoneOnAttempt + ' T' + topOnAttempt
+      : 'A' + attemptsMade + ' AZ' + zoneOnAttempt + ' AT' + topOnAttempt
 
     const updateScoreResult = await collection.doc(docName).update({
       data: {
@@ -58,7 +58,7 @@ exports.main = async (event, context) => {
     const incTotalTops = (topOnAttempt > 0) ? 1 : 0
     const routeResult = climberDNS
       ? 'DNS'
-      : 'A' + attemptsMade + ' Z' + zoneOnAttempt + ' T' + topOnAttempt
+      : 'A' + attemptsMade + ' AZ' + zoneOnAttempt + ' AT' + topOnAttempt
 
     const updateScoreResult = await collection.doc(docName).update({
       data: {
