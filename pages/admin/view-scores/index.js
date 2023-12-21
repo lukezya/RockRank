@@ -15,6 +15,7 @@ Page({
     quota: '',
     creationLoading: false,
     downloadScoresLoading: false,
+    sessionScoresRefreshTimer: null,
   },
 
   onBackClick(e) {
@@ -219,21 +220,39 @@ Page({
   },
   
    onShow() {
-    const { session_id } = this.data
+    this.refreshSessionScores()
+    this.data.sessionScoresRefreshTimer = setInterval(() => {
+      this.refreshSessionScores()
+    }, 10000)
+  },
+
+  refreshSessionScores() {
+    const { session_id, groupId } = this.data
     const { event_id } = getApp().globalData;
 
     wx.cloud.callFunction({ name: 'get-session-scores', data: { event_id, session_id } })
-      .then(getSessionScoresResult => {
-        console.log("getSessionScoresResult");
-        console.log(getSessionScoresResult);
+    .then(getSessionScoresResult => {
+      console.log("getSessionScoresResult");
+      console.log(getSessionScoresResult);
 
-        const { scores } = getSessionScoresResult.result;
-        const sortedScores = this.sortResults(scores);
+      const { scores } = getSessionScoresResult.result;
 
-        this.setData({
-          scores,
-          filteredScores: sortedScores,
-        })
+      const filteredScores = (groupId === 'All Groups')
+        ? this.sortResults(scores)
+        : this.sortResults(scores.filter(score => score.group_id === groupId))
+
+      this.setData({
+        scores,
+        filteredScores,
       })
+    })
+  },
+
+  onHide() {
+    clearInterval(this.data.sessionScoresRefreshTimer)
+  },
+
+  onUnload() {
+    clearInterval(this.data.sessionScoresRefreshTimer)
   }
 })
