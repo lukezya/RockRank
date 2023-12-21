@@ -246,20 +246,18 @@ Page({
     console.log("createGroupResults:")
     console.log(createGroupResults)
     const { group_id } = createGroupResults.result
-    this.setData({creationLoading: false})
-    wx.navigateBack({
-      delta: 1,
-      success: function () {
-        const pages = getCurrentPages();
-        const prevPage = pages[pages.length - 1];
-        const { climberGroups, categoryFilter, disciplineFilter } = prevPage.data
-        const newClimberGroups = [{ category, round, discipline, group_id }].concat(climberGroups)
-        prevPage.setData({
-          climberGroups: newClimberGroups
-        });
-        prevPage.onFilterSelect(categoryFilter, disciplineFilter)
-      },
+
+    const pages = getCurrentPages();
+    const prevPage = pages[pages.length - 2];
+    const { climberGroups, categoryFilter, disciplineFilter } = prevPage.data
+    const newClimberGroups = [{ category, round, discipline, group_id }].concat(climberGroups)
+    prevPage.setData({
+      climberGroups: newClimberGroups
     });
+    prevPage.onFilterSelect(categoryFilter, disciplineFilter)
+
+    this.setData({creationLoading: false})
+    wx.navigateBack()
   },
 
   /**

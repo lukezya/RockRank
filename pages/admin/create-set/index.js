@@ -261,21 +261,18 @@ Page({
 
     console.log(createSetResults)
     const { set_id } = createSetResults.result
-    this.setData({creationLoading: false})
 
-    wx.navigateBack({
-      delta: 1,
-      success: function () {
-        const pages = getCurrentPages();
-        const prevPage = pages[pages.length - 1];
-        const { routeSets, disciplineFilter } = prevPage.data
-        const newRouteSets = [{ set_id, set_name: setName, discipline }].concat(routeSets)
-        prevPage.setData({
-          routeSets: newRouteSets
-        });
-        prevPage.filterDiscipline(disciplineFilter)
-      },
+    const pages = getCurrentPages();
+    const prevPage = pages[pages.length - 2];
+    const { routeSets, disciplineFilter } = prevPage.data
+    const newRouteSets = [{ set_id, set_name: setName, discipline }].concat(routeSets)
+    prevPage.setData({
+      routeSets: newRouteSets
     });
+    prevPage.filterDiscipline(disciplineFilter)
+
+    this.setData({creationLoading: false})
+    wx.navigateBack()
   },
 
   /**

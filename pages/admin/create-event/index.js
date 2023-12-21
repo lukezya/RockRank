@@ -103,36 +103,29 @@ Page({
           categories: categoriesList
         }
       })
-      
+
       console.log("Cloud Function Results:")
       console.log(createEventCollectionResult.result)
-      this.setData({creationLoading: false})
 
-      wx.navigateBack({
-        delta: 1,
-        success: () => {
-          const pages = getCurrentPages();
-          console.log("Pages")
-          console.log(pages)
-          const prevPage = pages[pages.length - 1];
-          const { event_id } = createEventCollectionResult.result
-          const startDateFormatted = prevPage.formatDate(startDate);
-          const endDateFormatted = prevPage.formatDate(endDate);
-          console.log("Prev Page")
-          console.log(prevPage)
-          prevPage.setData({
-            events: prevPage.data.events.concat({ 
-              name: eventName,
-              location: eventLocation,
-              start_date: startDate,
-              end_date: endDate,
-              logo_url: uploadedFileResults.fileID,
-              _id: event_id,
-              dateRange: `${startDateFormatted} - ${endDateFormatted}`
-            })
-          });
-        },
+      const pages = getCurrentPages();
+      const prevPage = pages[pages.length - 2];
+      const { event_id } = createEventCollectionResult.result
+      const startDateFormatted = prevPage.formatDate(startDate);
+      const endDateFormatted = prevPage.formatDate(endDate);
+      prevPage.setData({
+        events: prevPage.data.events.concat({
+          name: eventName,
+          location: eventLocation,
+          start_date: startDate,
+          end_date: endDate,
+          logo_url: uploadedFileResults.fileID,
+          _id: event_id,
+          dateRange: `${startDateFormatted} - ${endDateFormatted}`
+        })
       });
+
+      this.setData({creationLoading: false})
+      wx.navigateBack();
     }
   },
 

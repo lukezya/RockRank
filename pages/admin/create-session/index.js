@@ -98,25 +98,22 @@ Page({
     console.log("createSessionResults:")
     console.log(createSessionResults)
     const { session_id } = createSessionResults.result
-    this.setData({creationLoading: false})
-    wx.navigateBack({
-      delta: 1,
-      success: function () {
-        const pages = getCurrentPages();
-        const prevPage = pages[pages.length - 1];
-        const { sessions, categoryFilter, disciplineFilter } = prevPage.data
-        const newSessions = [{ 
-          discipline,
-          status:'Open',
-          session_id, groups: selectedClimberGroups
-        }].concat(sessions)   
 
-        prevPage.setData({
-          sessions: newSessions      
-        });
-        prevPage.onFilterSelect(categoryFilter, disciplineFilter)
-      },
+    const pages = getCurrentPages();
+    const prevPage = pages[pages.length - 2];
+    const { sessions, categoryFilter, disciplineFilter } = prevPage.data
+    const newSessions = [{ 
+      discipline,
+      status:'Open',
+      session_id, groups: selectedClimberGroups
+    }].concat(sessions)
+
+    prevPage.setData({
+      sessions: newSessions
     });
+    prevPage.onFilterSelect(categoryFilter, disciplineFilter)
+    this.setData({creationLoading: false})
+    wx.navigateBack()
   },
 
   /**

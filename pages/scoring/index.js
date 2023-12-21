@@ -40,14 +40,11 @@ Page({
       console.log(res.result)
     })
 
-    wx.navigateBack({
-      delta: 1,
-      success: function () {
-        const pages = getCurrentPages();
-        const prevPage = pages[pages.length - 1];
-        prevPage.onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack, routeIndex)
-      },
-    });
+    const pages = getCurrentPages();
+    const prevPage = pages[pages.length - 2];
+    prevPage.onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack, routeIndex)
+
+    wx.navigateBack()
   },
 
   onDNSClick(e) {
