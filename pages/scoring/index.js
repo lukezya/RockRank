@@ -11,11 +11,24 @@ const Actions = {
 Page({
 
   data: {
-    routeUnchanged: true
+    routeUnchanged: true,
+    showFullScreen: false,
   },
 
   onBackClick(e) {
     wx.navigateBack()
+  },
+
+  onShowFullScreen() {
+    this.setData({
+      showFullScreen: true
+    })
+  },
+
+  onFullScreenClose() {
+    this.setData({
+      showFullScreen: false
+    })
   },
 
   onConfirmScoreClick(e) {
@@ -59,6 +72,8 @@ Page({
 
   onUndoClick(e) {
     const lastAction = this.data.undoStack.pop()
+
+    this.data.undoSound.play()
 
     switch (lastAction) {
       case Actions.DNS:
@@ -234,6 +249,9 @@ Page({
       const dnsSound = wx.createInnerAudioContext()
       dnsSound.src = '/sounds/DNS.mp3'
 
+      const undoSound = wx.createInnerAudioContext()
+      undoSound.src = '/sounds/Undo.mp3'
+
       const topSound = wx.createInnerAudioContext()
       topSound.src = '/sounds/Top.mp3'
 
@@ -267,6 +285,7 @@ Page({
           dnsSound,
           topSound,
           zoneSound,
+          undoSound,
           translations
         })
       } else {
@@ -292,6 +311,7 @@ Page({
           dnsSound,
           topSound,
           zoneSound,
+          undoSound,
           translations
         })
       }

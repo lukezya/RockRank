@@ -11,12 +11,36 @@
       <text class="bib-info">{{climberNumber}}</text>
       <text class="name-info">{{climberName}}</text>
     </view>
-    <view class="score-button {{ routeUnchanged ? 'score-button-disabled' : ''}}" bind:tap="onConfirmScoreClick">{{translations.confirm_score}}</view>
+    <view class="score-button {{ routeUnchanged ? 'score-button-disabled' : ''}}" bind:tap="onShowFullScreen">{{translations.confirm_score}}</view>
   </view>
+  <van-popup show="{{ showFullScreen }}" custom-style="width: 100%; height: 100%">
+    <view class="fullscreen-container">
+      <view class="scores-container">
+        <view class="score-container">
+          <text class="result-fullscreen-text">AZ</text>
+          <text class="result-fullscreen-text">{{zoneOnAttempt}}</text>
+        </view>
+        <view class="score-container">
+          <text class="result-fullscreen-text">AT</text>
+          <text class="result-fullscreen-text">{{topOnAttempt}}</text>
+        </view>
+      </view>
+      
+      <view class="back-float-button" bind:tap="onFullScreenClose">
+        <van-icon name="arrow-left" size="36rpx" />
+      </view>
+
+      <view class="success-float-button" bind:tap="onConfirmScoreClick">
+        <van-icon name="success" size="36rpx" />
+      </view>
+      
+    </view>
+    
+  </van-popup>
 
   <view class="result-info">
     <text class="route-info">{{translations.locale === 'zh' ? routeName + translations.route : translations.route + ' ' + routeName}}</text>
-    <text hidden="{{ climberDNS }}" class="result-text">A{{attemptsMade}} Z{{zoneOnAttempt}} T{{topOnAttempt}}</text>
+    <text hidden="{{ climberDNS }}" class="result-text">A{{attemptsMade}} AZ{{zoneOnAttempt}} AT{{topOnAttempt}}</text>
     <text hidden="{{ !climberDNS }}" class="dns-text">DNS</text>
   </view>
 
