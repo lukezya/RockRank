@@ -52,7 +52,7 @@
 }
 
 .result-text {
-  flex: 4;
+  flex: 5;
   letter-spacing: 2rpx;
 }
 

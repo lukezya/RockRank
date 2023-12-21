@@ -114,37 +114,6 @@
   margin-top: 30rpx;
 }
 
-.success-float-button {
-  width: 10%;
-  aspect-ratio: 1;
-  background-color: #FFF;
-  border-radius: 100rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  right: 5vw;
-  bottom: 3vh;
-  filter: drop-shadow(0rpx 6rpx 12rpx rgba(0, 0, 0, 0.25));
-}
-
-.back-float-button {
-  width: 10%;
-  aspect-ratio: 1;
-  background-color: #FFF;
-  border-radius: 100rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  left: 5vw;
-  top: 5vh;
-  filter: drop-shadow(0rpx 6rpx 12rpx rgba(0, 0, 0, 0.25));
-}
-
-
 .result-info {
   display: flex;
   flex-direction: column;
@@ -168,7 +137,7 @@
 
 .result-text {
   font-family: Inter;
-  font-size: 110rpx;
+  font-size: 90rpx;
   font-style: normal;
   font-weight: 600;
   line-height: normal;

@@ -13,8 +13,9 @@
     </view>
     <view class="score-button {{ routeUnchanged ? 'score-button-disabled' : ''}}" bind:tap="onShowFullScreen">{{translations.confirm_score}}</view>
   </view>
-  <van-popup show="{{ showFullScreen }}" custom-style="width: 100%; height: 100%">
-    <view class="fullscreen-container">
+  <van-popup show="{{ showFullScreen }}" position="bottom" custom-style="width: 100%; height: 100%">
+    <view class="fullscreen-container" catchtouchstart="touch1.start" catchtouchmove="touch1.move"
+    catchtouchend="touch1.end" catchtouchcancel="touch1.cancel">
       <view class="scores-container">
         <view class="score-container">
           <text class="result-fullscreen-text">AZ</text>
@@ -25,15 +26,6 @@
           <text class="result-fullscreen-text">{{topOnAttempt}}</text>
         </view>
       </view>
-      
-      <view class="back-float-button" bind:tap="onFullScreenClose">
-        <van-icon name="arrow-left" size="36rpx" />
-      </view>
-
-      <view class="success-float-button" bind:tap="onConfirmScoreClick">
-        <van-icon name="success" size="36rpx" />
-      </view>
-      
     </view>
     
   </van-popup>

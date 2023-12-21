@@ -1,3 +1,5 @@
+import  MinaTouch  from  'mina-touch'
+
 const Actions = {
   DNS: 'DNS',
   ATTEMPT: 'ATTEMPT',
@@ -31,7 +33,7 @@ Page({
     })
   },
 
-  onConfirmScoreClick(e) {
+  onConfirmScoreClick() {
     const { climberNumber, climberName, routeName, routeIndex, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack } = this.data
     const { event_id, session_id } = getApp().globalData
 
@@ -236,6 +238,17 @@ Page({
   },
   
   onLoad(options) {
+    new MinaTouch(this, 'touch1', {
+      swipe: (evt) => {
+        if (evt.direction === 'Up') {
+          this.onConfirmScoreClick()
+        }
+
+        if (evt.direction === 'Down') {
+          this.onFullScreenClose()
+        }
+      },
+    });
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('loadClimber', data => {
       const { selectedClimber, selectedRoute, routeIndex } = data
