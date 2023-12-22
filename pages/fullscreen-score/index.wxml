@@ -1,0 +1,10 @@
+<view class="fullscreen-container" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
+  <view class="score-container">
+    <text class="result-fullscreen-text">AZ</text>
+    <text class="result-fullscreen-text">{{zoneOnAttempt}}</text>
+  </view>
+  <view class="score-container">
+    <text class="result-fullscreen-text">AT</text>
+    <text class="result-fullscreen-text">{{topOnAttempt}}</text>
+  </view>
+</view>

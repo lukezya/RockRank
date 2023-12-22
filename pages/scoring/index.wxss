@@ -6,6 +6,20 @@
   height: 100vh;
 }
 
+.nav-bar-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar-arrow {
+  display: flex;
+}
+
+.nav-bar-fullscreen {
+  display: flex;
+  margin-left: 40rpx;
+}
+
 .top-info {
   display: flex;
   flex-direction: column;
@@ -81,37 +95,6 @@
   touch-action: none;
   cursor: not-allowed;
   border: 1px solid #F8F6FA;
-}
-
-.fullscreen-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.scores-container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
-}
-
-.score-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-}
-
-.result-fullscreen-text {
-  font-family: Inter;
-  font-size: 600%;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-top: 30rpx;
 }
 
 .result-info {

@@ -14,28 +14,28 @@ Page({
 
   data: {
     routeUnchanged: true,
-    showFullScreen: false,
   },
 
   onBackClick(e) {
     wx.navigateBack()
   },
 
-  onShowFullScreen() {
-    this.setData({
-      showFullScreen: true
-    })
-  },
-
-  onFullScreenClose() {
-    this.setData({
-      showFullScreen: false
+  onFullScreen() {
+    const { zoneOnAttempt, topOnAttempt } = this.data
+    wx.navigateTo({
+      url: '/pages/fullscreen-score/index?zoneOnAttempt=' + encodeURIComponent(zoneOnAttempt)
+      + '&topOnAttempt=' + encodeURIComponent(topOnAttempt)
     })
   },
 
   onConfirmScoreClick() {
     const { climberNumber, climberName, routeName, routeIndex, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack } = this.data
     const { event_id, session_id } = getApp().globalData
+
+    wx.navigateTo({
+      url: '/pages/fullscreen-score/index?zoneOnAttempt=' + encodeURIComponent(zoneOnAttempt)
+      + '&topOnAttempt=' + encodeURIComponent(topOnAttempt)
+    })
 
     wx.cloud.callFunction({
       name: 'update-session-score',
@@ -59,7 +59,11 @@ Page({
     const prevPage = pages[pages.length - 2];
     prevPage.onUpdateClimberScore(climberNumber, climberName, routeName, attemptsMade, zoneOnAttempt, topOnAttempt, climberDNS, undoStack, routeIndex)
 
-    wx.navigateBack()
+    // change initialStack to grey out confirm button and navigate To
+    this.setData({
+      initialStack: undoStack.slice(),
+      routeUnchanged: true
+    })
   },
 
   onDNSClick(e) {
@@ -240,12 +244,8 @@ Page({
   onLoad(options) {
     new MinaTouch(this, 'touch1', {
       swipe: (evt) => {
-        if (evt.direction === 'Up') {
-          this.onConfirmScoreClick()
-        }
-
-        if (evt.direction === 'Down') {
-          this.onFullScreenClose()
+        if (evt.direction === 'Right') {
+          wx.navigateBack()
         }
       },
     });

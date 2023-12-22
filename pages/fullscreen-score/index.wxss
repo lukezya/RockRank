@@ -1,0 +1,23 @@
+.fullscreen-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  padding: 0%;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-fullscreen-text {
+  font-family: Inter;
+  font-size: 600%;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  flex : 1;
+}

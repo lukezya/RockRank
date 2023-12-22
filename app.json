@@ -19,7 +19,8 @@
     "pages/admin/set-info/index",
     "pages/admin/group-info/index",
     "pages/admin/view-scores/index",
-    "pages/admin/score-info/index"
+    "pages/admin/score-info/index",
+    "pages/fullscreen-score/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
