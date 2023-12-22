@@ -1,7 +1,14 @@
 <view class="page-container">
-  <van-nav-bar bind:click-left="onBackClick">
-    <van-icon slot="left" name="arrow-left" />
+  <van-nav-bar>
     <text slot="title" class="nav-bar-title">{{translations.scores}}</text>
+    <view slot="left" class="nav-bar-left">
+      <view class="nav-bar-arrow" bind:tap="onBackClick">
+        <van-icon name="arrow-left" size="30rpx" />
+      </view>
+      <view class="nav-bar-fullscreen {{groupId === 'All Groups' ? 'disabled-button' : ''}}" bind:tap="onFullScreenClick">
+        <van-icon name="video-o" size="40rpx"/>
+      </view>
+    </view>
   </van-nav-bar>
 
   <van-dropdown-menu>

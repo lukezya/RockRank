@@ -22,6 +22,15 @@ Page({
     wx.navigateBack()
   },
 
+  onFullScreenClick(e) {
+    const { session_id, groupId } = this.data
+
+    wx.navigateTo({
+      url: '/pages/admin/live-score/index?sessionId=' + encodeURIComponent(session_id)
+        + '&groupId=' + encodeURIComponent(groupId)
+    })
+  },
+
   onGroupSelect(e) {
     console.log("Group Id:")
     console.log(e.detail)
@@ -221,9 +230,9 @@ Page({
   
    onShow() {
     this.refreshSessionScores()
-    this.data.sessionScoresRefreshTimer = setInterval(() => {
-      this.refreshSessionScores()
-    }, 10000)
+    // this.data.sessionScoresRefreshTimer = setInterval(() => {
+    //   this.refreshSessionScores()
+    // }, 10000)
   },
 
   refreshSessionScores() {

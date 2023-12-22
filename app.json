@@ -20,7 +20,8 @@
     "pages/admin/group-info/index",
     "pages/admin/view-scores/index",
     "pages/admin/score-info/index",
-    "pages/fullscreen-score/index"
+    "pages/fullscreen-score/index",
+    "pages/admin/live-score/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

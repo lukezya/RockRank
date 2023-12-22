@@ -14,6 +14,20 @@
   font-weight: 700;
 }
 
+.nav-bar-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar-arrow {
+  display: flex;
+}
+
+.nav-bar-fullscreen {
+  display: flex;
+  margin-left: 40rpx;
+}
+
 .scores-container {
   overflow-y: auto;
 }

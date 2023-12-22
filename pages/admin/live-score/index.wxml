@@ -1,0 +1,21 @@
+<view class="page-container" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
+  <view class="title-box">
+    {{title}}
+  </view>
+
+  <van-row>
+    <van-col span="2" custom-class="top">{{translations.rank}}</van-col>
+    <van-col span="2" custom-class="top">{{translations.climber_number}}</van-col>
+    <van-col span="4" custom-class="top">{{translations.climber_name}}</van-col>
+    <van-col span="4" custom-class="top">{{translations.total_score}}</van-col>
+    <van-col span="12" custom-class="top">{{translations.scores}}</van-col>
+  </van-row>
+  <van-row wx:for="{{filteredScores}}" wx:for-item="score" wx:for-index="index">
+    <van-col span="2" custom-class="{{index % 2 === 0 ? 'light' : 'dark'}}">{{index + 1}}</van-col>
+    <van-col span="2" custom-class="{{index % 2 === 0 ? 'light' : 'dark'}}">{{score.climberNumber}}</van-col>
+    <van-col span="4" custom-class="{{index % 2 === 0 ? 'light' : 'dark'}}">{{score.climberName}}</van-col>
+    <van-col span="4" custom-class="{{index % 2 === 0 ? 'light' : 'dark'}}">T{{score.total_tops}} Z{{score.total_zones}} AT{{score.total_attempts_to_top}} AZ{{score.total_attempts_to_zone}}</van-col>
+    <van-col span="12" custom-class="{{index % 2 === 0 ? 'light' : 'dark'}}">{{score.score_record}}</van-col>
+  </van-row>
+
+</view>
