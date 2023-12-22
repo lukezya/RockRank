@@ -52,7 +52,7 @@ Page({
 
   onConfirmScorePassword() {
     const { scorePassword, translations } = this.data
-    if (scorePassword === '8864') {
+    if (scorePassword === '2023') {
       wx.navigateTo({
         url: '/pages/events/index'
       })
@@ -87,7 +87,7 @@ Page({
 
   onConfirmPassword() {
     const { password, translations } = this.data
-    if (password === '5178') {
+    if (password === '0323') {
       wx.navigateTo({
         url: '/pages/admin/add-event/index',
       })
