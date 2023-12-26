@@ -78,7 +78,7 @@ Page({
   },
 
   async onDownloadScores() {
-    const { groupId, discipline, filteredScores, groups, translations } = this.data
+    const { groupId, discipline, filteredScores, groups, translations, session_id } = this.data
     const { event_id } = getApp().globalData
     const currentGroup = groups.find(group => group.group_id === groupId)
     const category = currentGroup ? currentGroup.category : translations.all_groups
@@ -92,7 +92,8 @@ Page({
         discipline,
         round,
         filteredScores,
-        event_id
+        event_id,
+        session_id
       }
     })
 
