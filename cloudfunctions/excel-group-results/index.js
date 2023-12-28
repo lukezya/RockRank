@@ -24,7 +24,10 @@ exports.main = async (event, context) => {
     (_, index) => (index % 2 === 0 ? "AZ" : "AT")
   );
 
-  const currentDate = new Date();
+  const theDate = new Date();
+  const chinaTimezoneOffset = 480; // China Standard Time (CST) is UTC+8
+  const currentDate = new Date(theDate.getTime() + chinaTimezoneOffset * 60000);
+
   const formattedDate = `${currentDate.getFullYear()}年${currentDate.getMonth() + 1}月${currentDate.getDate()}日`;
   const formattedTime = `${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}`;
 
