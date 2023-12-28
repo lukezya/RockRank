@@ -6,7 +6,7 @@ const db = cloud.database()
 
 exports.main = async (event, context) => {
   const { category, discipline, round, filteredScores, event_id, session_id } = event
-  const fileID = "cloud://ascend-ace-3gds88z0338d88f2.6173-ascend-ace-3gds88z0338d88f2-1314089217/templates/成绩单TemplateV2.xlsx";
+  const fileID = "cloud://ascend-ace-3gds88z0338d88f2.6173-ascend-ace-3gds88z0338d88f2-1314089217/templates/成绩单TemplateV3.xlsx";
   const downloadFileResult = await cloud.downloadFile({
     fileID: fileID
   });
@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
 
   const session = await collection.doc(session_id).get()
   const { routes } = session.data
-  const routesHeadings = routes.map((route) => ["线路", route.routeName]).flat()
+  const routesHeadings = routes.map((route) => [route.routeName, ""]).flat()
   const routesSubheadings = Array.from(
     { length: routes.length * 2 },
     (_, index) => (index % 2 === 0 ? "AZ" : "AT")
