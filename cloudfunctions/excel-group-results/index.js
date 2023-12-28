@@ -26,11 +26,14 @@ exports.main = async (event, context) => {
 
   const currentDate = new Date();
   const formattedDate = `${currentDate.getFullYear()}年${currentDate.getMonth() + 1}月${currentDate.getDate()}日`;
+  const formattedTime = `${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}`;
+
 
   const viewModel = { 
     event_name: name,
     location,
     date: formattedDate,
+    time: formattedTime,
     category,
     round,
     discipline,
