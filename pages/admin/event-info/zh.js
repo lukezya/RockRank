@@ -17,6 +17,7 @@ const translations = {
   categories_placeholder: '输入比赛组别，每个组别单独占一行',
   chief_judge: '裁判长:',
   deputy_chief_judge: '副裁判长:',
+  route_judge: '线路裁判:',
   results_processing_judge: '成绩处理裁判:',
 }
 

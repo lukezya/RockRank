@@ -17,6 +17,7 @@ const translations = {
   categories_placeholder: 'Enter categories - each on a new line',
   chief_judge: 'Chief Judge:',
   deputy_chief_judge: 'Deputy Chief Judge:',
+  route_judge: 'Route Judge:',
   results_processing_judge: 'Results Processing Judge:',
 }
 

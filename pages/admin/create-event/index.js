@@ -15,6 +15,7 @@ Page({
     categories: '',
     chiefJudge: '',
     deputyChiefJudge: '',
+    routeJudge: '',
     resultsProcessingJudge: '',
     creationLoading: false,
     disciplines: []
@@ -79,12 +80,16 @@ Page({
     this.setData({deputyChiefJudge: e.detail.value})
   },
 
+  onRouteJudgeInput(e) {
+    this.setData({routeJudge: e.detail.value})
+  },
+
   onResultsProcessingJudgeInput(e) {
     this.setData({resultsProcessingJudge: e.detail.value})
   },
 
   async onCreateEvent(e) {
-    const {categories, selectedDisciplines, startDate, endDate, eventLocation, eventName, chiefJudge, deputyChiefJudge, resultsProcessingJudge, imageList, translations} = this.data
+    const {categories, selectedDisciplines, startDate, endDate, eventLocation, eventName, chiefJudge, deputyChiefJudge, routeJudge, resultsProcessingJudge, imageList, translations} = this.data
     // check if all data is filled
     if (!categories || selectedDisciplines.length == 0 || !startDate || !endDate || !eventLocation || !eventName || imageList.length == 0) {
       Toast.fail({
@@ -118,6 +123,7 @@ Page({
           categories: categoriesList,
           chief_judge: chiefJudge,
           deputy_chief_judge: deputyChiefJudge,
+          route_judge: routeJudge,
           results_processing_judge: resultsProcessingJudge
         }
       })

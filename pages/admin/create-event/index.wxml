@@ -65,6 +65,11 @@
     </view>
 
     <view class="single-row-input">
+      <text class="text-label">{{translations.route_judge}}</text>
+      <input class="text-input" bindinput="onRouteJudgeInput" />
+    </view>
+
+    <view class="single-row-input">
       <text class="text-label">{{translations.results_processing_judge}}</text>
       <input class="text-input" bindinput="onResultsProcessingJudgeInput" />
     </view>

@@ -78,6 +78,11 @@
     </view>
 
     <view class="row-input">
+      <text class="text-label">{{translations.route_judge}}</text>
+      <input class="text-input {{ editMode ? '' : 'text-input-disabled'}}" disabled="{{ !editMode }}" value="{{routeJudge}}" bindinput="onRouteJudgeInput"/>
+    </view>
+
+    <view class="row-input">
       <text class="text-label">{{translations.results_processing_judge}}</text>
       <input class="text-input {{ editMode ? '' : 'text-input-disabled'}}" disabled="{{ !editMode }}" value="{{resultsProcessingJudge}}" bindinput="onResultsProcessingJudgeInput"/>
     </view>

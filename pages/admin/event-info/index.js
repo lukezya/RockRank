@@ -34,6 +34,10 @@ Page({
     this.setData({deputyChiefJudge: e.detail.value})
   },
 
+  onRouteJudgeInput(e) {
+    this.setData({routeJudge: e.detail.value})
+  },
+
   onResultsProcessingJudgeInput(e) {
     this.setData({resultsProcessingJudge: e.detail.value})
   },
@@ -82,7 +86,7 @@ Page({
   },
 
   async onDoneClick(e) {
-    const {categories, disciplines, startDate, endDate, eventLocation, eventName, chiefJudge, deputyChiefJudge, resultsProcessingJudge, imageList, translations} = this.data
+    const {categories, disciplines, startDate, endDate, eventLocation, eventName, chiefJudge, deputyChiefJudge, routeJudge, resultsProcessingJudge, imageList, translations} = this.data
     // check if all data is filled
     if (!categories || disciplines.length == 0 || !startDate || !endDate || !eventLocation || !eventName || imageList.length == 0) {
       Toast.fail({
@@ -108,6 +112,7 @@ Page({
         categories: categoriesList,
         chief_judge: chiefJudge,
         deputy_chief_judge: deputyChiefJudge,
+        route_judge: routeJudge,
         results_processing_judge: resultsProcessingJudge
       }
     })
@@ -143,7 +148,7 @@ Page({
         event_id
       }
     }).then(getEventResult => {
-      const { name, location, start_date, end_date, logo_url, disciplines, categories, chief_judge, deputy_chief_judge, results_processing_judge } = getEventResult.result
+      const { name, location, start_date, end_date, logo_url, disciplines, categories, chief_judge, deputy_chief_judge, route_judge, results_processing_judge } = getEventResult.result
       
       getApp().globalData.disciplines = disciplines;
       getApp().globalData.categories = categories;
@@ -169,6 +174,7 @@ Page({
         maxDate: oneYearFromNow.getTime(),
         chiefJudge: chief_judge,
         deputyChiefJudge: deputy_chief_judge,
+        routeJudge: route_judge,
         resultsProcessingJudge: results_processing_judge,
         availableDisciplines,
         translations,

@@ -6,7 +6,7 @@ cloud.init({
 const db = cloud.database()
 
 exports.main = async (event, context) => {
-  const { name, location, start_date, end_date, logo_url, disciplines, categories, chief_judge, deputy_chief_judge, results_processing_judge } = event
+  const { name, location, start_date, end_date, logo_url, disciplines, categories, chief_judge, deputy_chief_judge, route_judge, results_processing_judge } = event
 
   const addToEventsResults = await db.collection('Events').add({
     data: {
@@ -34,6 +34,7 @@ exports.main = async (event, context) => {
       categories,
       chief_judge,
       deputy_chief_judge,
+      route_judge,
       results_processing_judge,
     }
   })
