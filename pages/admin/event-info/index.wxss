@@ -10,6 +10,7 @@
   flex-direction: column;
   padding: 5%;
   align-content: space-between;
+  overflow-y: auto;
 }
 
 .nav-bar-title {

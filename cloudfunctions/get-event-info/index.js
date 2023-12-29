@@ -9,15 +9,5 @@ exports.main = async (event, context) => {
   const collection = db.collection(event_id)
   const eventInfo = await collection.doc('event_info').get()
 
-  const { name, location, start_date, end_date, logo_url, disciplines, categories } = eventInfo.data
-
-  return {
-    name,
-    location,
-    start_date,
-    end_date,
-    logo_url,
-    disciplines,
-    categories
-  }
+  return eventInfo.data
 }

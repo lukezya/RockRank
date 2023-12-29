@@ -13,6 +13,9 @@ const translations = {
   bouldering_and_lead: '全能赛',
   all_fields: '请填写所有字段',
   categories_placeholder: '输入比赛组别，每个组别单独占一行',
+  chief_judge: '裁判长:',
+  deputy_chief_judge: '副裁判长:',
+  results_processing_judge: '成绩处理裁判:',
 }
 
 module.exports = translations

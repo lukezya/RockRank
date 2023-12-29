@@ -6,13 +6,16 @@ Page({
    * Page initial data
    */
   data: {
-    eventName: "",
-    eventLocation: "",
+    eventName: '',
+    eventLocation: '',
     imageList: [],
     showCalendar: false,
     confirmedDate: '',
     selectedDisciplines: [],
     categories: '',
+    chiefJudge: '',
+    deputyChiefJudge: '',
+    resultsProcessingJudge: '',
     creationLoading: false,
     disciplines: []
   },
@@ -68,8 +71,20 @@ Page({
     this.setData({ categories: e.detail.value })
   },
 
+  onChiefJudgeInput(e) {
+    this.setData({chiefJudge: e.detail.value})
+  },
+
+  onDeputyChiefJudgeInput(e) {
+    this.setData({deputyChiefJudge: e.detail.value})
+  },
+
+  onResultsProcessingJudgeInput(e) {
+    this.setData({resultsProcessingJudge: e.detail.value})
+  },
+
   async onCreateEvent(e) {
-    const {categories, selectedDisciplines, startDate, endDate, eventLocation, eventName, imageList, translations} = this.data
+    const {categories, selectedDisciplines, startDate, endDate, eventLocation, eventName, chiefJudge, deputyChiefJudge, resultsProcessingJudge, imageList, translations} = this.data
     // check if all data is filled
     if (!categories || selectedDisciplines.length == 0 || !startDate || !endDate || !eventLocation || !eventName || imageList.length == 0) {
       Toast.fail({
@@ -100,7 +115,10 @@ Page({
           end_date: endDate,
           logo_url: uploadedFileResults.fileID,
           disciplines: selectedDisciplines,
-          categories: categoriesList
+          categories: categoriesList,
+          chief_judge: chiefJudge,
+          deputy_chief_judge: deputyChiefJudge,
+          results_processing_judge: resultsProcessingJudge
         }
       })
 

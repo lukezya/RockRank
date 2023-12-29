@@ -13,6 +13,9 @@ const translations = {
   bouldering_and_lead: 'Bouldering and Lead',
   all_fields: 'Please fill in all fields',
   categories_placeholder: 'Enter categories - each on a new line',
+  chief_judge: 'Chief Judge:',
+  deputy_chief_judge: 'Deputy Chief Judge:',
+  results_processing_judge: 'Results Processing Judge:',
 }
 
 module.exports = translations

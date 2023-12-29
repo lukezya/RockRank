@@ -6,7 +6,7 @@ cloud.init({
 const db = cloud.database()
 
 exports.main = async (event, context) => {
-  const { event_id, name, location, start_date, end_date, logo_url, disciplines, categories } = event
+  const { event_id, name, location, start_date, end_date, logo_url, disciplines, categories, chief_judge, deputy_chief_judge, results_processing_judge } = event
 
   // Update Event Info in event_id collection.
   const eventIdCollection = db.collection(event_id)
@@ -20,6 +20,9 @@ exports.main = async (event, context) => {
       logo_url,
       disciplines,
       categories,
+      chief_judge,
+      deputy_chief_judge,
+      results_processing_judge
     }
   })
 

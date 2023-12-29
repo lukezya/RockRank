@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
 
   const collection = db.collection(event_id)
   const eventInfo = await collection.doc('event_info').get()
-  const { name, location } = eventInfo.data
+  const { name, location, chief_judge, deputy_chief_judge, results_processing_judge } = eventInfo.data
 
   const session = await collection.doc(session_id).get()
   const { routes } = session.data
@@ -42,6 +42,9 @@ exports.main = async (event, context) => {
     discipline,
     routes_headings: routesHeadings,
     routes_subheadings: routesSubheadings,
+    chief_judge,
+    deputy_chief_judge,
+    results_processing_judge,
     climbers: filteredScores.map((score, index) => ({
       index: index + 1,
       climberNumber: score.climberNumber,

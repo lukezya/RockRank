@@ -6,7 +6,7 @@
   </van-nav-bar>
 
   <view class="form-container">
-    <view class="row-input">
+    <view class="single-row-input">
       <text class="text-label">{{translations.event_name}}</text>
       <input class="text-input" bindinput="onNameInput" />
     </view>
@@ -16,7 +16,7 @@
       <input class="text-input" bindinput="onLocationInput"/>
     </view>
 
-    <view class="single-row-input">
+    <view class="row-input">
       <text class="text-label">{{translations.event_logo}}</text>
       <view class="uploader-align">
         <van-uploader max-count="1" upload-icon="photo" bind:after-read="onImageUpload" file-list="{{ imageList }}" preview-size="180rpx" bind:delete="onLogoDelete" />
@@ -52,6 +52,21 @@
     <view class="row-input">
       <text class="text-label">{{translations.categories}}</text>
       <textarea class="category-input" placeholder="{{translations.categories_placeholder}}" bindinput="onCategoryInput" cursor-spacing="130" />
+    </view>
+
+    <view class="single-row-input">
+      <text class="text-label">{{translations.chief_judge}}</text>
+      <input class="text-input" bindinput="onChiefJudgeInput" />
+    </view>
+
+    <view class="single-row-input">
+      <text class="text-label">{{translations.deputy_chief_judge}}</text>
+      <input class="text-input" bindinput="onDeputyChiefJudgeInput" />
+    </view>
+
+    <view class="single-row-input">
+      <text class="text-label">{{translations.results_processing_judge}}</text>
+      <input class="text-input" bindinput="onResultsProcessingJudgeInput" />
     </view>
   </view>
   

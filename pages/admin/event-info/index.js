@@ -26,6 +26,18 @@ Page({
     this.setData({ categories: e.detail.value })
   },
 
+  onChiefJudgeInput(e) {
+    this.setData({chiefJudge: e.detail.value})
+  },
+
+  onDeputyChiefJudgeInput(e) {
+    this.setData({deputyChiefJudge: e.detail.value})
+  },
+
+  onResultsProcessingJudgeInput(e) {
+    this.setData({resultsProcessingJudge: e.detail.value})
+  },
+
   onImageUpload(e) {
     this.setData({imageList: [{url: e.detail.file.url}]})
   },
@@ -70,7 +82,7 @@ Page({
   },
 
   async onDoneClick(e) {
-    const {categories, disciplines, startDate, endDate, eventLocation, eventName, imageList, translations} = this.data
+    const {categories, disciplines, startDate, endDate, eventLocation, eventName, chiefJudge, deputyChiefJudge, resultsProcessingJudge, imageList, translations} = this.data
     // check if all data is filled
     if (!categories || disciplines.length == 0 || !startDate || !endDate || !eventLocation || !eventName || imageList.length == 0) {
       Toast.fail({
@@ -93,7 +105,10 @@ Page({
         end_date: endDate,
         logo_url: imageList[0].url,
         disciplines: disciplines,
-        categories: categoriesList
+        categories: categoriesList,
+        chief_judge: chiefJudge,
+        deputy_chief_judge: deputyChiefJudge,
+        results_processing_judge: resultsProcessingJudge
       }
     })
 
@@ -128,7 +143,7 @@ Page({
         event_id
       }
     }).then(getEventResult => {
-      const { name, location, start_date, end_date, logo_url, disciplines, categories } = getEventResult.result
+      const { name, location, start_date, end_date, logo_url, disciplines, categories, chief_judge, deputy_chief_judge, results_processing_judge } = getEventResult.result
       
       getApp().globalData.disciplines = disciplines;
       getApp().globalData.categories = categories;
@@ -152,6 +167,9 @@ Page({
         disciplines,
         categories: categories.join('\n'),
         maxDate: oneYearFromNow.getTime(),
+        chiefJudge: chief_judge,
+        deputyChiefJudge: deputy_chief_judge,
+        resultsProcessingJudge: results_processing_judge,
         availableDisciplines,
         translations,
         language

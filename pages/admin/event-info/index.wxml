@@ -66,6 +66,21 @@
       <text class="text-label">{{translations.categories}}</text>
       <textarea class="category-input {{ editMode ? '' : 'disable-category'}}" placeholder="{{translations.categories_placeholder}}" disabled="{{ !editMode }}" value="{{categories}}" bindinput="onCategoryInput" cursor-spacing="130" />
     </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.chief_judge}}</text>
+      <input class="text-input {{ editMode ? '' : 'text-input-disabled'}}" disabled="{{ !editMode }}" value="{{chiefJudge}}" bindinput="onChiefJudgeInput"/>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.deputy_chief_judge}}</text>
+      <input class="text-input {{ editMode ? '' : 'text-input-disabled'}}" disabled="{{ !editMode }}" value="{{deputyChiefJudge}}" bindinput="onDeputyChiefJudgeInput"/>
+    </view>
+
+    <view class="row-input">
+      <text class="text-label">{{translations.results_processing_judge}}</text>
+      <input class="text-input {{ editMode ? '' : 'text-input-disabled'}}" disabled="{{ !editMode }}" value="{{resultsProcessingJudge}}" bindinput="onResultsProcessingJudgeInput"/>
+    </view>
   </view>
   <button wx:if="{{!editMode}}" class="bottom-button" bind:tap="onEditClick">{{translations.edit}}</button>
   
