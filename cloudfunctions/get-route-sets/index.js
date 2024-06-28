@@ -1,7 +1,7 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
-cloud.init({ env: 'ascend-ace-3gds88z0338d88f2' }) // 使用当前云环境
+cloud.init({ env: 'ascendace-3g8ocnepa195e1cf' }) // 使用当前云环境
 
 const db = cloud.database()
 

@@ -1,5 +1,5 @@
 const config = {
-  envId: 'ascend-ace-3gds88z0338d88f2'
+  envId: 'ascendace-3g8ocnepa195e1cf'
 }
 
 module.exports = config

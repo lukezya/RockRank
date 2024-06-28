@@ -1,12 +1,12 @@
 const cloud = require('wx-server-sdk');
 const Renderer = require('xlsx-renderer')
 
-cloud.init({ env: 'ascend-ace-3gds88z0338d88f2' });
+cloud.init({ env: 'ascendace-3g8ocnepa195e1cf' });
 const db = cloud.database()
 
 exports.main = async (event, context) => {
   const { category, discipline, round, climbers, event_id } = event
-  const fileID = "cloud://ascend-ace-3gds88z0338d88f2.6173-ascend-ace-3gds88z0338d88f2-1314089217/templates/线路成绩记录Template.xlsx";
+  const fileID = "cloud://ascendace-3g8ocnepa195e1cf.6173-ascendace-3g8ocnepa195e1cf-1314089217/templates/线路成绩记录Template.xlsx";
   const downloadFileResult = await cloud.downloadFile({
     fileID: fileID
   });
